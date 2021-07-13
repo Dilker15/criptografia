@@ -189,9 +189,6 @@
             for ($i = 0; $i < $cant; $i++) {
                 array_push($lista_Final, $lista_Despl[$i]);                
             }
-            echo "ABC nuevo";
-            var_dump($lista_Despl);
-            
             return $lista_Final;
         }
     

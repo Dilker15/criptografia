@@ -7,11 +7,10 @@
 
     $cifrador = new CifradoClasico();
 
-    $alfabeto_m = $cifrador->getAlfabeto();
-    $$alfabeto_c = [];
+    $alfabetoM = $cifrador->getAlfabeto();
+    $alfabetoC = $cifrador->getAlfabeto();
     $alfabeto_invertido = $cifrador->getAlfabetoInvertido();
 
-    // Variables 
     $accion = "";
     $resultado = "";
     $texto_plano = "";
@@ -22,8 +21,7 @@
             $accion = $_REQUEST["accion"];
             $texto_plano    = isset($_REQUEST["texto_plano"])   ? utf8_decode($_REQUEST["texto_plano"]) : "";
             $desplazamiento = isset($_REQUEST["desplazamiento"])? utf8_decode($_REQUEST["desplazamiento"]) : "";
-            echo "desplazamiento" . $desplazamiento;
-            $$alfabeto_c = $cifrador->lista_Despl($desplazamiento);
+            $alfabetoC = $cifrador->lista_Despl($desplazamiento);
             $resultado = $cifrador->cifrarDesplazamientoPuro($texto_plano, $desplazamiento);
         }
 
@@ -59,9 +57,9 @@
                 <tr>
                     <td></td>
                     <?php 
-                        $items_alfabeto = count($alfabeto_m); 
+                        $items_maximo = count($alfabetoM); 
 
-                        for ($i=0; $i < $items_alfabeto; $i++) { ?>
+                        for ($i=0; $i < $items_maximo; $i++) { ?>
                             <td><?= $i; ?></td>
                         <?php }
                     ?>
@@ -70,18 +68,20 @@
                 <tr>
                     <td>M<sub>i</sub></td>
                     <?php 
-                        for ($i=0; $i < $items_alfabeto; $i++) { ?>
-                            <td><?= utf8_encode($alfabeto_m[$i]); ?></td>
+                        $items_alfabetoM = count($alfabetoM); 
+                        for ($i=0; $i < $items_alfabetoM; $i++) { ?>
+                            <td><?= utf8_encode($alfabetoM[$i]); ?></td>
                         <?php }
                     ?>
                 </tr>
                 <?php
-                    if($$alfabeto_c != []) {?>
+                    if($alfabetoC != []) {?>
                         <tr>
                             <td>C<sub>i</sub></td>
                             <?php                     
-                                for ($i=0; $i < $items_alfabeto; $i++) { ?>
-                                    <td><?= utf8_encode($$alfabeto_c[$i]); ?></td>
+                                $items_alfabetoC = count($alfabetoC); 
+                                for ($i=0; $i < $items_alfabetoC; $i++) { ?>
+                                    <td><?= utf8_encode($alfabetoC[$i]); ?></td>
                                 <?php }
                             ?>
                         </tr>  
