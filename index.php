@@ -47,13 +47,13 @@
                         <a href="<?= constant("URL") ?>transposicion/grupos.php">
                             <button type="button" class="btn btn-warning">Grupos</button>
                         </a>
-                        <a href="<?= constant("URL") ?>transposicion/series.php">
+                        <a href="<?= constant("URL") ?>transposicion/presentacion/cifradoSerie.php">
                             <button type="button" class="btn btn-warning">Series</button>
                         </a>
-                        <a href="<?= constant("URL") ?>transposicion/columnas.php">
+                        <a href="<?= constant("URL") ?>transposicion/presentacion/cifradoCol.php">
                             <button type="button" class="btn btn-warning">Columnas</button>
                         </a>
-                        <a href="<?= constant("URL") ?>transposicion/filas.php">
+                        <a href="<?= constant("URL") ?>transposicion/presentacion/cifradoFil.php">
                             <button type="button" class="btn btn-warning">Filas</button>
                         </a>
                         <a href="<?= constant("URL") ?>transposicion/zig_zag.php">
