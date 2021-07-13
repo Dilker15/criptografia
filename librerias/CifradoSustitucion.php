@@ -17,7 +17,7 @@
             11 => 'L',
             12 => 'M',
             13 => 'N',
-            14 => 'Ñ',
+            14 => '�', 
             15 => 'O',
             16 => 'P',
             17 => 'Q',
@@ -39,8 +39,8 @@
         public $texto_cifrado;
         private $tipo_seleccionado;
         private $tipos = [
-            "0" => "Mono alfabética",
-            "1" => "Poli alfabética",
+            "0" => "Mono alfab�tica",
+            "1" => "Poli alfab�tica",
         ];
 
         function __construct() {
@@ -104,11 +104,8 @@
             $texto_cifrado = "";
             $texto_claro = strtoupper($texto_claro);
             $longitud_texto = strlen($texto_claro);
-            for($i=0; $i < $longitud_texto ;$i++){                
+            for($i=0; $i < $longitud_texto ;$i++){                 
                 $letra_tc = $texto_claro[$i];
-                echo $letra_tc . "\n";
-                echo "Encoded " . utf8_encode($letra_tc) . " )";
-                echo "Decoded " . utf8_decode($letra_tc) . "";
                 $indice = array_search($letra_tc, $this->alfabeto);
                 if($indice !== false){
                     $texto_cifrado .= $alfabeto[$indice];
@@ -123,7 +120,7 @@
             $longitud_texto = strlen($texto_encriptado);
             for($i=0; $i < $longitud_texto ;$i++){                
                 $letra_tc = $texto_encriptado[$i];
-               
+                
                 $indice = array_search($letra_tc, $alfabeto);
                 if($indice !== false){
                     $texto_claro .= $this->alfabeto[$indice];

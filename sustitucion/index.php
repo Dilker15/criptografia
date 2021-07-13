@@ -15,22 +15,23 @@
     if(isset($_REQUEST["accion"])){
         if($_REQUEST["accion"] == "cifrar" ){
             $accion = $_REQUEST["accion"];
-            $texto_plano = isset($_REQUEST["texto_plano"])? ($_REQUEST["texto_plano"]) : "";
+            $texto_plano = isset($_REQUEST["texto_plano"])? utf8_decode($_REQUEST["texto_plano"]) : "";
+            echo "TExto plano sin ir" . $texto_plano;
             $resultado = $cifrador->cifrarAlfabeticamente($texto_plano, $alfabeto_invertido);
         }
 
         if($_REQUEST["accion"] == "descifrar" ){
             $accion = $_REQUEST["accion"];
-            $texto_encriptado = isset($_REQUEST["texto_encriptado"])? ($_REQUEST["texto_encriptado"]) : "";
+            $texto_encriptado = isset($_REQUEST["texto_encriptado"])? utf8_decode($_REQUEST["texto_encriptado"]) : "";
             $resultado = $cifrador->descifrarAlfabeticamente($texto_encriptado, $alfabeto_invertido);
         }
     }
 ?>
 
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es"> 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cifrador por sustitución</title>
@@ -67,7 +68,7 @@
                         <td>M<sub>i</sub></td>
                         <?php 
                             for ($i=0; $i < $items_alfabeto; $i++) { ?>
-                                <td><?= $alfabeto[$i]; ?></td>
+                                <td><?= utf8_encode($alfabeto[$i]); ?></td>
                             <?php }
                         ?>
                     </tr>
@@ -75,7 +76,7 @@
                         <td>C<sub>i</sub></td>
                         <?php 
                             for ($i=0; $i < $items_alfabeto; $i++) { ?>
-                                <td><?= $alfabeto_invertido[$i]; ?></td>
+                                <td><?= utf8_encode($alfabeto_invertido[$i]); ?></td>
                             <?php }
                         ?>
                     </tr>
@@ -89,7 +90,7 @@
                     <input type="hidden" value="cifrar" name="accion">
                     <div class="mb-3">
                         <label for="texto_plano" class="form-label">Texto Plano</label>
-                        <input type="text" class="form-control" id="texto_plano" name="texto_plano" aria-describedby="textoPlano">
+                        <input onkeyup="javascript:this.value=this.value.toUpperCase();" type="text" class="form-control" id="texto_plano" name="texto_plano" aria-describedby="textoPlano">
                         <div id="textoPlano" class="form-text">Ingrese el texto a cifrar.</div>
                     </div>
                     <button type="submit" class="btn btn-success">Cifrar</button>
@@ -98,9 +99,9 @@
                     if($resultado != "" && $accion == "cifrar"){ ?>
                         <div class="row pt-3">
                             <div class="col">
-                                <h5>Cifrado exitosamente el texto de: <i class="text-secondary"><?= strtoupper($texto_plano) ?></i>  a:</h5>
+                                <h5>Cifrado exitosamente el texto de: <i class="text-secondary"><?= utf8_encode(strtoupper($texto_plano)) ?></i>  a:</h5>
                                 <h4 class="text-success">
-                                    <?= $resultado ?>       
+                                    <?= utf8_encode($resultado) ?>       
                                 </h4>
                                 
                             </div>
@@ -116,7 +117,7 @@
                     <input type="hidden" value="descifrar" name="accion">
                     <div class="mb-3">
                         <label for="texto_encriptado" class="form-label">Texto Encriptado</label>
-                        <input type="text" class="form-control" id="texto_encriptado" name="texto_encriptado" aria-describedby="textoEncriptado">
+                        <input onkeyup="javascript:this.value=this.value.toUpperCase();" type="text" class="form-control" id="texto_encriptado" name="texto_encriptado" aria-describedby="textoEncriptado">
                         <div id="textoEncriptado" class="form-text">Ingrese el texto a descifrar.</div>
                     </div>
                     <button type="submit" class="btn btn-warning">Descifrar</button>
@@ -125,9 +126,9 @@
                     if($resultado != "" && $accion == "descifrar"){ ?>
                         <div class="row pt-3">
                             <div class="col">
-                                <h5>Descifrado exitosamente el texto encriptado de: <i class="text-secondary"><?= strtoupper($texto_encriptado) ?></i>  a:</h5>
+                                <h5>Descifrado exitosamente el texto encriptado de: <i class="text-secondary"><?= utf8_encode(strtoupper($texto_encriptado)) ?></i>  a:</h5>
                                 <h4 class="text-success">
-                                    <?= $resultado ?>       
+                                    <?= utf8_encode($resultado) ?>       
                                 </h4>
                                 
                             </div>
