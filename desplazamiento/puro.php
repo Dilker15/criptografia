@@ -7,7 +7,8 @@
 
     $cifrador = new CifradoClasico();
 
-    $alfabeto = $cifrador->getAlfabeto();
+    $alfabeto_m = $cifrador->getAlfabeto();
+    $$alfabeto_c = [];
     $alfabeto_invertido = $cifrador->getAlfabetoInvertido();
 
     // Variables 
@@ -21,6 +22,8 @@
             $accion = $_REQUEST["accion"];
             $texto_plano    = isset($_REQUEST["texto_plano"])   ? utf8_decode($_REQUEST["texto_plano"]) : "";
             $desplazamiento = isset($_REQUEST["desplazamiento"])? utf8_decode($_REQUEST["desplazamiento"]) : "";
+            echo "desplazamiento" . $desplazamiento;
+            $$alfabeto_c = $cifrador->lista_Despl($desplazamiento);
             $resultado = $cifrador->cifrarDesplazamientoPuro($texto_plano, $desplazamiento);
         }
 
@@ -56,29 +59,36 @@
                 <tr>
                     <td></td>
                     <?php 
-                        $items_alfabeto = count($alfabeto); 
+                        $items_alfabeto = count($alfabeto_m); 
 
                         for ($i=0; $i < $items_alfabeto; $i++) { ?>
                             <td><?= $i; ?></td>
                         <?php }
                     ?>
                 </tr>
+                
                 <tr>
                     <td>M<sub>i</sub></td>
                     <?php 
                         for ($i=0; $i < $items_alfabeto; $i++) { ?>
-                            <td><?= utf8_encode($alfabeto[$i]); ?></td>
+                            <td><?= utf8_encode($alfabeto_m[$i]); ?></td>
                         <?php }
                     ?>
                 </tr>
-                <tr>
-                    <td>C<sub>i</sub></td>
-                    <?php 
-                        for ($i=0; $i < $items_alfabeto; $i++) { ?>
-                            <td><?= utf8_encode($alfabeto_invertido[$i]); ?></td>
-                        <?php }
-                    ?>
-                </tr>
+                <?php
+                    if($$alfabeto_c != []) {?>
+                        <tr>
+                            <td>C<sub>i</sub></td>
+                            <?php                     
+                                for ($i=0; $i < $items_alfabeto; $i++) { ?>
+                                    <td><?= utf8_encode($$alfabeto_c[$i]); ?></td>
+                                <?php }
+                            ?>
+                        </tr>  
+                        <?php 
+                    }
+
+                ?>                
             </table>
         </div>
     </div>
@@ -91,6 +101,11 @@
                     <label for="texto_plano" class="form-label">Texto Plano</label>
                     <input onkeyup="javascript:this.value=this.value.toUpperCase();" type="text" class="form-control" id="texto_plano" name="texto_plano" aria-describedby="textoPlano">
                     <div id="textoPlano" class="form-text">Ingrese el texto a cifrar.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="desplazamiento" class="form-label">Desplazamiento</label>
+                    <input onkeyup="javascript:this.value=this.value.toUpperCase();" type="text" class="form-control" id="desplazamiento" name="desplazamiento" aria-describedby="desplazamiento">
+                    <div id="desplazamiento" class="form-text">Ingrese las posiciones a desplazar</div>
                 </div>
                 <button type="submit" class="btn btn-success">Cifrar</button>
             </form>
