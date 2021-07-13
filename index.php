@@ -25,8 +25,11 @@
                         <p class="card-text">Este cifrado se basa principalmente en desplazamientos sobre un alfabeto.</p>
                     </div>
                     <div class="card-footer">
-                        <a href="desplazamiento">
-                            <button type="button" class="btn btn-dark">Ingresar</button>
+                        <a href="<?= constant("URL") ?>desplazamiento/puro.php">
+                            <button type="button" class="btn btn-dark">Puro</button>
+                        </a>
+                        <a href="<?= constant("URL") ?>desplazamiento/con_clave.php">
+                            <button type="button" class="btn btn-dark">Con Clave</button>
                         </a>
                     </div>
                 </div>
@@ -41,8 +44,20 @@
                         <p class="card-text"> método de cifra que consiste en cambiar de lugar los elementos del texto en claro en el criptrograma</p>
                     </div>
                     <div class="card-footer">
-                        <a href="transposicion">
-                            <button type="button" class="btn btn-warning">Ingresar</button>
+                        <a href="<?= constant("URL") ?>transposicion/grupos.php">
+                            <button type="button" class="btn btn-warning">Grupos</button>
+                        </a>
+                        <a href="<?= constant("URL") ?>transposicion/series.php">
+                            <button type="button" class="btn btn-warning">Series</button>
+                        </a>
+                        <a href="<?= constant("URL") ?>transposicion/columnas.php">
+                            <button type="button" class="btn btn-warning">Columnas</button>
+                        </a>
+                        <a href="<?= constant("URL") ?>transposicion/filas.php">
+                            <button type="button" class="btn btn-warning">Filas</button>
+                        </a>
+                        <a href="<?= constant("URL") ?>transposicion/zig_zag.php">
+                            <button type="button" class="btn btn-warning">Zig-Zag</button>
                         </a>
                     </div>
                 </div>
@@ -56,9 +71,12 @@
                         <p class="card-text">son los que han tenido un mayor desarrollo en la historia de la criptografía clásica</p>
                     </div>
                     <div class="card-footer">
-                        <a href="sustitucion">
-                            <button type="button" class="btn btn-danger">Ingresar</button>
-                        </a>                        
+                        <a href="<?= constant("URL") ?>sustitucion/mono_alfabetica.php">
+                            <button type="button" class="btn btn-danger">Mono alfabética</button>
+                        </a>
+                        <a href="<?= constant("URL") ?>sustitucion/poli_alfabetica.php">
+                            <button type="button" class="btn btn-danger">Poli alfabética</button>
+                        </a>
                     </div>
                 </div>
             </div>

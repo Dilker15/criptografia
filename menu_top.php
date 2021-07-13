@@ -27,10 +27,10 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="<?= constant("URL") ?>transposicion/grupos.php">Grupos</a></li>
-                        <li><a class="dropdown-item" href="#">Series</a></li>
-                        <li><a class="dropdown-item" href="#">Columnas</a></li>
-                        <li><a class="dropdown-item" href="#">Filas</a></li>
-                        <li><a class="dropdown-item" href="#">Zig-Zag</a></li>
+                        <li><a class="dropdown-item" href="<?= constant("URL") ?>transposicion/series.php">Series</a></li>
+                        <li><a class="dropdown-item" href="<?= constant("URL") ?>transposicion/columnas.php">Columnas</a></li>
+                        <li><a class="dropdown-item" href="<?= constant("URL") ?>transposicion/filas.php">Filas</a></li>
+                        <li><a class="dropdown-item" href="<?= constant("URL") ?>transposicion/zig_zag.php">Zig-Zag</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
@@ -39,7 +39,7 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="<?= constant("URL") ?>sustitucion/mono_alfabetica.php">Mono alfabética</a></li>
-                        <li><a class="dropdown-item" href="#">Poli alfabética</a></li>
+                        <li><a class="dropdown-item" href="<?= constant("URL") ?>sustitucion/poli_alfabetica.php">Poli alfabética</a></li>
                     </ul>
                 </li>
             </ul>
