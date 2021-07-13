@@ -5,32 +5,44 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Inicio</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="informacion_grupo.php">Integrantes</a>
-            </li>
-            <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Desplazamiento
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">Puro</a></li>
-                <li><a class="dropdown-item" href="#">Puro con Palabra Clave</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="<?= constant("URL") ?>">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= constant("URL") ?>informacion_grupo.php">Integrantes</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="<?= constant("URL") ?>desplazamiento" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Desplazamiento
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="<?= constant("URL") ?>desplazamiento/puro.php">Puro</a></li>
+                        <li><a class="dropdown-item" href="<?= constant("URL") ?>desplazamiento/con_clave.php">Puro con Palabra Clave</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Transposicion
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="<?= constant("URL") ?>transposicion/grupos.php">Grupos</a></li>
+                        <li><a class="dropdown-item" href="#">Series</a></li>
+                        <li><a class="dropdown-item" href="#">Columnas</a></li>
+                        <li><a class="dropdown-item" href="#">Filas</a></li>
+                        <li><a class="dropdown-item" href="#">Zig-Zag</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Sustitución 
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="<?= constant("URL") ?>sustitucion/mono_alfabetica.php">Mono alfabética</a></li>
+                        <li><a class="dropdown-item" href="#">Poli alfabética</a></li>
+                    </ul>
+                </li>
             </ul>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-            </li>
-        </ul>
-        <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
         </div>
     </div>
 </nav>

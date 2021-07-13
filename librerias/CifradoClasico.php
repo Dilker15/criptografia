@@ -1,6 +1,6 @@
 <?php
 
-    class CifradoSustitucion {
+    class CifradoClasico {
 
         private $alfabeto = [
             0  => 'A',
@@ -39,9 +39,10 @@
         public $texto_claro;
         public $texto_cifrado;
         private $tipo_seleccionado;
+        
         private $tipos = [
-            "0" => "Mono alfabï¿½tica",
-            "1" => "Poli alfabï¿½tica",
+            "0" => "Mono alfabética",
+            "1" => "Poli alfabética",
         ];
 
         function __construct() {
