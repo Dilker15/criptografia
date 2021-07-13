@@ -27,9 +27,9 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="<?= constant("URL") ?>transposicion/grupos.php">Grupos</a></li>
-                        <li><a class="dropdown-item" href="<?= constant("URL") ?>transposicion/series.php">Series</a></li>
-                        <li><a class="dropdown-item" href="<?= constant("URL") ?>transposicion/columnas.php">Columnas</a></li>
-                        <li><a class="dropdown-item" href="<?= constant("URL") ?>transposicion/filas.php">Filas</a></li>
+                        <li><a class="dropdown-item" href="<?= constant("URL") ?>transposicion/presentacion/cifradoSerie.php">Series</a></li>
+                        <li><a class="dropdown-item" href="<?= constant("URL") ?>transposicion/presentacion/cifradoCol.php">Columnas</a></li>
+                        <li><a class="dropdown-item" href="<?= constant("URL") ?>transposicion/presentacion/cifradoFil.php">Filas</a></li>
                         <li><a class="dropdown-item" href="<?= constant("URL") ?>transposicion/zig_zag.php">Zig-Zag</a></li>
                     </ul>
                 </li>
