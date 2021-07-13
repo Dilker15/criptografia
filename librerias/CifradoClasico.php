@@ -193,19 +193,35 @@
         }
     
 
-        public function cifrado_Puro_Con_Clave($mensaje, $llave){
+        public function cifradoPuroConClave($mensaje, $llave, $desp){
             $lista_llave = $this->listaClave($llave);
-            var_dump($this->abc);
-            var_dump($lista_llave);
+            $cola = [];
+            for ($i=count($lista_llave)-1; $i >= 0; $i--) { 
+                array_push($cola, $lista_llave[$i]);
+            }
+
+            for ($i=0; $i < $desp ; $i++) {
+                array_push($cola, $cola[$i]);
+                array_splice($cola, 1, 0);
+            }
+
+            $lista_llave = [];
+            $cant = count($cola);
+            for ($i=0; $i < $cant ; $i++) { 
+                array_push($lista_llave, $cola[$i]);
+            }
+
+            $lista_llave = array_reverse($lista_llave);
             $letras_Msm = str_split($mensaje);
             $meh = ""; 
-            
+
             for ($i = 0; $i < count($letras_Msm); $i++) {
                 $pos = array_search($letras_Msm[$i], $this->abc);
                 if ($pos !== false) {
                     $meh .= $lista_llave[$pos];
                 }
             }
+            
             return $meh;
         }
         
