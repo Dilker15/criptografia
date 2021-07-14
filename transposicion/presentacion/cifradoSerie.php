@@ -2,7 +2,7 @@
 <?php include("../negocio/cifrado_serie.php") ?>
 
 <?php
-if ((isset($_REQUEST['cifrar']) or isset($_REQUEST['descifrar']) )and (!isset($_REQUEST['primerSerie']) or !isset($_REQUEST['segundaSerie']) or !isset($_REQUEST['terceraSerie']))) { ?>
+if ((isset($_REQUEST['cifrar']) or isset($_REQUEST['descifrar'])) and (!isset($_REQUEST['primerSerie']) or !isset($_REQUEST['segundaSerie']) or !isset($_REQUEST['terceraSerie']))) { ?>
     <div class="container mt-2 alert alert-success text-center" role="alert">
         fijate bien el orden de serie, deben de ser distintas, y estar presionadas
     </div>
@@ -178,6 +178,8 @@ if ((isset($_REQUEST['cifrar']) or isset($_REQUEST['descifrar']) )and (!isset($_
 
                     <a type="submit" href="cifradoSerie.php" class="btn btn-success " name="resetear" value="Resetear">
                         resetear</a>
+                    <a type="submit" href="../../index.php" class="btn btn-success " name="resetear" value="Resetear">
+                        menu</a>
                 </div>
         </form>
     </div>
@@ -204,9 +206,11 @@ if ((isset($_REQUEST['cifrar']) or isset($_REQUEST['descifrar']) )and (!isset($_
         <h1 class="text-center">Cifrado</h1>
         <div class="card container bg-primary mt-3 mb-3" style="width: 60rem;">
             <div class="card-body">
-                <label for="palabracifrada">
-                    <h4>Palabra cifrada : </h4><?php echo $cifra->palabraCifrada; ?>
+                <h4>La palabra a cifrar es : </h4>
+                <label for="">
+                    <?php echo $cifra->cifrar; ?>
                 </label>
+
                 <h3>Orden de permutacion</h3>
                 <label for="palabracifrada">
                     1er orden de serie : <?php echo $cifra->mostrarSerieOrden($_REQUEST["primerSerie"]); ?>
@@ -217,6 +221,9 @@ if ((isset($_REQUEST['cifrar']) or isset($_REQUEST['descifrar']) )and (!isset($_
                 <label for="palabracifrada">
                     3ra orden de serie : <?php echo $cifra->mostrarSerieOrden($_REQUEST["terceraSerie"]); ?>
                 </label>
+
+                <h4>Palabra cifrada : </h4>
+                <input type="text" for="palabracifrada" value="<?php echo $cifra->palabraCifrada; ?>">
             </div>
         </div>
 
@@ -243,8 +250,9 @@ if ((isset($_REQUEST['cifrar']) or isset($_REQUEST['descifrar']) )and (!isset($_
         <h1 class="text-center">Descifrado</h1>
         <div class="card container bg-primary mt-3 mb-3" style="width: 60rem;">
             <div class="card-body">
+                <h4>Palabra a descifrar : </h4>
                 <label for="palabracifrada">
-                    <h4>Palabra descifrada : </h4><?php echo $cifra->palabraCifrada; ?>
+                    <?php echo $cifra->cifrar; ?>
                 </label>
                 <h3>Orden de permutacion</h3>
                 <label for="palabracifrada">
@@ -256,6 +264,10 @@ if ((isset($_REQUEST['cifrar']) or isset($_REQUEST['descifrar']) )and (!isset($_
                 <label for="palabracifrada">
                     3ra orden de serie : <?php echo $cifra->mostrarSerieOrden($_REQUEST["terceraSerie"]); ?>
                 </label>
+                <h4>Palabra descifrada : </h4>
+                <input type="text" for="palabracifrada" value="<?php echo $cifra->palabraCifrada; ?>">
+                    
+                </input>
             </div>
         </div>
 
