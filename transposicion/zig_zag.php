@@ -125,7 +125,9 @@
             ?>
 
         </div>
+          
         <div class="col">
+            <!--
             <h4>Descifrado</h4>
             <form action="" method="GET">
                 <input type="hidden" value="descifrar" name="accion">
@@ -136,20 +138,22 @@
                 </div>
                 <button type="submit" class="btn btn-warning">Descifrar</button>
             </form>
-            <?php 
+          
+            < ?php 
                 if($resultado != "" && $accion == "descifrar"){ ?>
                     <div class="row pt-3">
                         <div class="col">
-                            <h5>Descifrado exitosamente el texto encriptado de: <i class="text-secondary"><?= utf8_encode(strtoupper($texto_encriptado)) ?></i>  a:</h5>
+                            <h5>Descifrado exitosamente el texto encriptado de: <i class="text-secondary">< ?= utf8_encode(strtoupper($texto_encriptado)) ?></i>  a:</h5>
                             <h4 class="text-success">
-                                <?= utf8_encode($resultado) ?>       
+                                < ?= utf8_encode($resultado) ?>       
                             </h4>
                             
                         </div>
                     </div>
-                    <?php 
+                    < ?php 
                 }
-            ?>              
+            ?>  
+            -->            
         </div>
     </div>
 </div>

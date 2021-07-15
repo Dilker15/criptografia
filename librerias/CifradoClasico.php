@@ -285,12 +285,26 @@
             $meh = "";
             $listaDespl = $this->lista_Despl($desplazamiento);
             $letras = str_split($mensaje);
-            //print_r($this->abc);
-            //var_dump($listaDespl);
+
             for ($i = 0; $i < count($letras); $i++) {
                 $pos = array_search($letras[$i], $this->abc);
                 if ($pos !== false) {
                     $meh .= $listaDespl[$pos];
+                }
+            }
+            
+            return $meh;
+        }
+
+        public function descifrarDesplazamientoPuro($mensaje, $desplazamiento){
+            $meh = "";
+            $listaDespl = $this->lista_Despl($desplazamiento);
+            $letras = str_split($mensaje);
+
+            for ($i = 0; $i < count($letras); $i++) {
+                $pos = array_search($letras[$i], $listaDespl);
+                if ($pos !== false) {
+                    $meh .= $this->abc[$pos];
                 }
             }
             
