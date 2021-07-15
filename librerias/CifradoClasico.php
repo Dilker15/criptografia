@@ -178,6 +178,29 @@
             return $texto_cifrado;
         }
 
+        public function descifradoVigenere($texto, $clave){
+            $txt_sin_espacios = $this->eliminarEspacios($texto);
+            $clave_sin_espacios = $this->eliminarEspacios($clave);
+
+            $dimension = strlen($txt_sin_espacios);
+
+            $claves = $this->cargarClaveVigenere($clave_sin_espacios, $dimension);
+
+            $texto_cifrado = "";
+
+            for ($i=0; $i < $dimension; $i++) { 
+                $fil = array_search($claves[$i], $this->alfabeto);
+
+                $col = array_search($txt_sin_espacios[$i], $this->alfabeto_vigenere[$fil]);
+                
+                $texto_cifrado .= $this->alfabeto[$col];
+            }
+            return $texto_cifrado;
+        }
+
+
+        
+
         public function cargarClaveVigenere($clave, $dim_texto_claro){
             $dim_clave = strlen($clave);
             $claves_repetidas = [];

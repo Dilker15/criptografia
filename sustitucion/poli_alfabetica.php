@@ -12,6 +12,7 @@
     $accion = "";
     $resultado = "";
     $texto_plano = "";
+    $texto_encriptado = "";
     $clave = "";
 
     if(isset($_REQUEST["accion"])){
@@ -24,9 +25,9 @@
 
         if($_REQUEST["accion"] == "descifrar" ){
             $accion = $_REQUEST["accion"];
-            $texto_plano = isset($_REQUEST["texto_plano"])? utf8_decode($_REQUEST["texto_plano"]) : "";
             $texto_encriptado = isset($_REQUEST["texto_encriptado"])? utf8_decode($_REQUEST["texto_encriptado"]) : "";
-            //$resultado = $cifrador->descifrarAlfabeticamente($texto_encriptado, $alfabeto_invertido);
+            $clave = isset($_REQUEST["clave"])? utf8_decode($_REQUEST["clave"]) : "";
+            $resultado = $cifrador->descifradoVigenere($texto_encriptado, $clave);
         }
     }
 ?>
@@ -119,8 +120,14 @@
                     <input onkeyup="javascript:this.value=this.value.toUpperCase();" type="text" class="form-control" id="texto_encriptado" name="texto_encriptado" aria-describedby="textoEncriptado">
                     <div id="textoEncriptado" class="form-text">Ingrese el texto a descifrar.</div>
                 </div>
+                <div class="mb-3">
+                    <label for="clave" class="form-label">Clave</label>
+                    <input onkeyup="javascript:this.value=this.value.toUpperCase();" type="text" class="form-control" id="clave" name="clave" aria-describedby="clave">
+                    <div id="clave" class="form-text">Ingrese la clave para el cifrado</div>
+                </div>
                 <button type="submit" class="btn btn-warning">Descifrar</button>
             </form>
+
             <?php 
                 if($resultado != "" && $accion == "descifrar"){ ?>
                     <div class="row pt-3">
