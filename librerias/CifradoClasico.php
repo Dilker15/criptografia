@@ -220,26 +220,40 @@
 
         }
 
-        public function cifradoZigZag($mensaje, $filas){
+        public function cifradoZigZag($mensaje, $n_filas){
             $txt_sin_espacios = $this->eliminarEspacios($mensaje);
-            $cantidad_letras = count($txt_sin_espacios);
-            $modulo = strlen($txt_sin_espacios) % $filas;
-            
-            $n_el_ciclo = ($filas*2) - 2;
+            $dimension = strlen($txt_sin_espacios);
+            $texto_cifrado = "";
 
-            $items = [];
-            $cont_ciclo = 1; 
-            for ($i= 0; $i < $cantidad_letras ; $i++) { 
-                if($cont_ciclo <= $n_el_ciclo ){
-                    array_push($items, $txt_sin_espacios);
-                    $items[$i];
+            $matriz = [];
+            $i = 0;
+            $sw = 1;
 
-                    $cont_ciclo++;
+            for ($j=0; $j < $dimension; $j++) {
+
+                if($i == $n_filas - 1){
+                    $sw = -1;
                 }
-                $txt_sin_espacios .= "X";
+
+                if($i == 0){
+                    $sw = 1;
+                }
+
+                $matriz[$i][$j] = $txt_sin_espacios[$j];
+                $i = $i + $sw;
+            }
+     
+            for ($i=0; $i < $n_filas ; $i++) { 
+                for ($j=0; $j < $dimension; $j++) { 
+                    
+                    if(isset($matriz[$i][$j])){
+                        $texto_cifrado .= $matriz[$i][$j];
+                        
+                    }
+                }
             }
 
-            return $txt_sin_espacios;
+            return $texto_cifrado;
         }
 
         public function eliminarEspacios($texto){
