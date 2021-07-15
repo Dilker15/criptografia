@@ -1,79 +1,94 @@
+<?php include_once("../header.php") ?>
+
+
 <?php 
-    include_once("../header.php");
 
     include_once("../librerias/CifradoClasico.php");
 
     $cifrador = new CifradoClasico();
 
-    $alfabeto = $cifrador->getAlfabeto();
+    $alfabetoM = $cifrador->getAlfabeto();
+    $alfabetoC = $cifrador->getAlfabeto();
     $alfabeto_invertido = $cifrador->getAlfabetoInvertido();
 
-    // Variables 
     $accion = "";
     $resultado = "";
     $texto_plano = "";
-    $clave = "";
+    $filas = "";
 
     if(isset($_REQUEST["accion"])){
         if($_REQUEST["accion"] == "cifrar" ){
             $accion = $_REQUEST["accion"];
-            $texto_plano = isset($_REQUEST["texto_plano"])? utf8_decode($_REQUEST["texto_plano"]) : "";
-            $clave = isset($_REQUEST["clave"])? utf8_decode($_REQUEST["clave"]) : "";
-            $resultado = $cifrador->cifrarTransposicion($texto_plano, $clave);
+            $texto_plano    = isset($_REQUEST["texto_plano"])   ? utf8_decode($_REQUEST["texto_plano"]) : "";
+            $filas = isset($_REQUEST["filas"])? utf8_decode($_REQUEST["filas"]) : "";
+            //$alfabetoC = $cifrador->lista_Despl($filas);
+            $resultado = $cifrador->cifradoZigZag($texto_plano, $filas);
         }
 
         if($_REQUEST["accion"] == "descifrar" ){
             $accion = $_REQUEST["accion"];
-            $texto_plano = isset($_REQUEST["texto_plano"])? utf8_decode($_REQUEST["texto_plano"]) : "";
             $texto_encriptado = isset($_REQUEST["texto_encriptado"])? utf8_decode($_REQUEST["texto_encriptado"]) : "";
-            //$resultado = $cifrador->descifrarAlfabeticamente($texto_encriptado, $alfabeto_invertido);
+            $filas = isset($_REQUEST["filas"])? utf8_decode($_REQUEST["filas"]) : "";
+            //$resultado = $cifrador->descifrarDesplazamientoPuro($texto_encriptado, $alfabeto_invertido);
         }
     }
 ?>
+
+
+
 
 
 <div class="container">
     <?php include_once("../menu_top.php") ?>
     <div class="row">
         <div class="card">
-            <div class="card-header bg-warning text-light">
+            <div class="card-header bg-dark text-light">
                 <h1>Cifrado por Transposicion</h1>
             </div>
             <div class="card-body">
-                <h3 class="card-title">Cifrado por Transposicion por Grupos</h3>
+                <h3 class="card-title">Cifrado por Zig Zag</h3>
                 <p class="card-text"></p>
             </div>
         </div>
         <div class="col">
             <h1></h1>
-            <h3>Alfabeto Base</h3>
+            <h4>Alfabeto Base</h4>
             <table class="table">
                 <tr>
                     <td></td>
                     <?php 
-                        $items_alfabeto = count($alfabeto); 
+                        $items_maximo = count($alfabetoM); 
 
-                        for ($i=0; $i < $items_alfabeto; $i++) { ?>
+                        for ($i=0; $i < $items_maximo; $i++) { ?>
                             <td><?= $i; ?></td>
                         <?php }
                     ?>
                 </tr>
+                
                 <tr>
                     <td>M<sub>i</sub></td>
                     <?php 
-                        for ($i=0; $i < $items_alfabeto; $i++) { ?>
-                            <td><?= utf8_encode($alfabeto[$i]); ?></td>
+                        $items_alfabetoM = count($alfabetoM); 
+                        for ($i=0; $i < $items_alfabetoM; $i++) { ?>
+                            <td><?= utf8_encode($alfabetoM[$i]); ?></td>
                         <?php }
                     ?>
                 </tr>
-                <tr>
-                    <td>C<sub>i</sub></td>
-                    <?php 
-                        for ($i=0; $i < $items_alfabeto; $i++) { ?>
-                            <td><?= utf8_encode($alfabeto_invertido[$i]); ?></td>
-                        <?php }
-                    ?>
-                </tr>
+                <?php
+                    if($alfabetoC != []) {?>
+                        <tr>
+                            <td>C<sub>i</sub></td>
+                            <?php                     
+                                $items_alfabetoC = count($alfabetoC); 
+                                for ($i=0; $i < $items_alfabetoC; $i++) { ?>
+                                    <td><?= utf8_encode($alfabetoC[$i]); ?></td>
+                                <?php }
+                            ?>
+                        </tr>  
+                        <?php 
+                    }
+
+                ?>                
             </table>
         </div>
     </div>
@@ -88,9 +103,9 @@
                     <div id="textoPlano" class="form-text">Ingrese el texto a cifrar.</div>
                 </div>
                 <div class="mb-3">
-                    <label for="clave" class="form-label">Clave</label>
-                    <input onkeyup="javascript:this.value=this.value.toUpperCase();" type="text" class="form-control" id="clave" name="clave" aria-describedby="clave">
-                    <div id="clave" class="form-text">Ingrese la clave para el cifrado</div>
+                    <label for="filas" class="form-label">Número de Filas</label>
+                    <input onkeyup="javascript:this.value=this.value.toUpperCase();" type="text" class="form-control" id="filas" value="3" name="filas" aria-describedby="filas">
+                    <div id="filas" class="form-text">Ingrese las posiciones a desplazar</div>
                 </div>
                 <button type="submit" class="btn btn-success">Cifrar</button>
             </form>
@@ -138,6 +153,5 @@
         </div>
     </div>
 </div>
-
 
 <?php include_once("../footer.php") ?>

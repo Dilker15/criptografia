@@ -56,11 +56,9 @@
                         <a href="<?= constant("URL") ?>transposicion/presentacion/cifradoFil.php">
                             <button type="button" class="btn btn-warning">Filas</button>
                         </a>
-                        <!--
-                        <a href="< ?= constant("URL") ?>transposicion/zig_zag.php">
+                        <a href="<?= constant("URL") ?>transposicion/zig_zag.php">
                             <button type="button" class="btn btn-warning">Zig-Zag</button>
                         </a>
-                        -->
                     </div>
                 </div>
             </div>

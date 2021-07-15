@@ -30,7 +30,7 @@
                         <li><a class="dropdown-item" href="<?= constant("URL") ?>transposicion/presentacion/cifradoSerie.php">Series</a></li>
                         <li><a class="dropdown-item" href="<?= constant("URL") ?>transposicion/presentacion/cifradoCol.php">Columnas</a></li>
                         <li><a class="dropdown-item" href="<?= constant("URL") ?>transposicion/presentacion/cifradoFil.php">Filas</a></li>
-                        <!-- <li><a class="dropdown-item" href="<?= constant("URL") ?>transposicion/zig_zag.php">Zig-Zag</a></li> -->
+                        <li><a class="dropdown-item" href="<?= constant("URL") ?>transposicion/zig_zag.php">Zig-Zag</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
@@ -39,7 +39,7 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="<?= constant("URL") ?>sustitucion/mono_alfabetica.php">Mono alfabética</a></li>
-                        <!-- <li><a class="dropdown-item" href="< ?= constant("URL") ?>sustitucion/poli_alfabetica.php">Poli alfabética</a></li> -->
+                        <li><a class="dropdown-item" href="<?= constant("URL") ?>sustitucion/poli_alfabetica.php">Poli alfabética</a></li>
                     </ul>
                 </li>
             </ul>

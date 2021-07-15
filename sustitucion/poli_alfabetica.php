@@ -19,7 +19,7 @@
             $accion = $_REQUEST["accion"];
             $texto_plano = isset($_REQUEST["texto_plano"])? utf8_decode($_REQUEST["texto_plano"]) : "";
             $clave = isset($_REQUEST["clave"])? utf8_decode($_REQUEST["clave"]) : "";
-            $resultado = $cifrador->cifrarTransposicion($texto_plano, $clave);
+            $resultado = $cifrador->cifradoVigenere($texto_plano, $clave);
         }
 
         if($_REQUEST["accion"] == "descifrar" ){
@@ -36,11 +36,11 @@
     <?php include_once("../menu_top.php") ?>
     <div class="row">
         <div class="card">
-            <div class="card-header bg-warning text-light">
-                <h1>Cifrado por Transposicion</h1>
+            <div class="card-header bg-danger text-light">
+                <h1>Cifrado por Sustitución</h1>
             </div>
             <div class="card-body">
-                <h3 class="card-title">Cifrado por Transposicion por Grupos</h3>
+                <h3 class="card-title">Cifrado por el método de Vigenere</h3>
                 <p class="card-text"></p>
             </div>
         </div>

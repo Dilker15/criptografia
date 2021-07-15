@@ -32,6 +32,36 @@
             26 => 'Z'
         ];
 
+        private $alfabeto_vigenere = [
+            ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','Ñ','O','P','Q','R','S','T','U','V','W','X','Y','Z'],
+            ['B','C','D','E','F','G','H','I','J','K','L','M','N','Ñ','O','P','Q','R','S','T','U','V','W','X','Y','Z','A'],
+            ['C','D','E','F','G','H','I','J','K','L','M','N','Ñ','O','P','Q','R','S','T','U','V','W','X','Y','Z','A','B'],
+            ['D','E','F','G','H','I','J','K','L','M','N','Ñ','O','P','Q','R','S','T','U','V','W','X','Y','Z','A','B','C'],
+            ['E','F','G','H','I','J','K','L','M','N','Ñ','O','P','Q','R','S','T','U','V','W','X','Y','Z','A','B','C','D'],
+            ['F','G','H','I','J','K','L','M','N','Ñ','O','P','Q','R','S','T','U','V','W','X','Y','Z','A','B','C','D','E'],
+            ['G','H','I','J','K','L','M','N','Ñ','O','P','Q','R','S','T','U','V','W','X','Y','Z','A','B','C','D','E','F'],
+            ['H','I','J','K','L','M','N','Ñ','O','P','Q','R','S','T','U','V','W','X','Y','Z','A','B','C','D','E','F','G'],
+            ['I','J','K','L','M','N','Ñ','O','P','Q','R','S','T','U','V','W','X','Y','Z','A','B','C','D','E','F','G','H'],
+            ['J','K','L','M','N','Ñ','O','P','Q','R','S','T','U','V','W','X','Y','Z','A','B','C','D','E','F','G','H','I'],
+            ['K','L','M','N','Ñ','O','P','Q','R','S','T','U','V','W','X','Y','Z','A','B','C','D','E','F','G','H','I','J'],
+            ['L','M','N','Ñ','O','P','Q','R','S','T','U','V','W','X','Y','Z','A','B','C','D','E','F','G','H','I','J','K'],
+            ['M','N','Ñ','O','P','Q','R','S','T','U','V','W','X','Y','Z','A','B','C','D','E','F','G','H','I','J','K','L'],
+            ['N','Ñ','O','P','Q','R','S','T','U','V','W','X','Y','Z','A','B','C','D','E','F','G','H','I','J','K','L','M'],
+            ['Ñ','O','P','Q','R','S','T','U','V','W','X','Y','Z','A','B','C','D','E','F','G','H','I','J','K','L','M','N'],
+            ['O','P','Q','R','S','T','U','V','W','X','Y','Z','A','B','C','D','E','F','G','H','I','J','K','L','M','N','Ñ'],
+            ['P','Q','R','S','T','U','V','W','X','Y','Z','A','B','C','D','E','F','G','H','I','J','K','L','M','N','Ñ','O'],
+            ['Q','R','S','T','U','V','W','X','Y','Z','A','B','C','D','E','F','G','H','I','J','K','L','M','N','Ñ','O','P'],
+            ['R','S','T','U','V','W','X','Y','Z','A','B','C','D','E','F','G','H','I','J','K','L','M','N','Ñ','O','P','Q'],
+            ['S','T','U','V','W','X','Y','Z','A','B','C','D','E','F','G','H','I','J','K','L','M','N','Ñ','O','P','Q','R'],
+            ['T','U','V','W','X','Y','Z','A','B','C','D','E','F','G','H','I','J','K','L','M','N','Ñ','O','P','Q','R','S'],
+            ['U','V','W','X','Y','Z','A','B','C','D','E','F','G','H','I','J','K','L','M','N','Ñ','O','P','Q','R','S','T'],
+            ['V','W','X','Y','Z','A','B','C','D','E','F','G','H','I','J','K','L','M','N','Ñ','O','P','Q','R','S','T','U'],
+            ['W','X','Y','Z','A','B','C','D','E','F','G','H','I','J','K','L','M','N','Ñ','O','P','Q','R','S','T','U','V'],
+            ['X','Y','Z','A','B','C','D','E','F','G','H','I','J','K','L','M','N','Ñ','O','P','Q','R','S','T','U','V','W'],
+            ['Y','Z','A','B','C','D','E','F','G','H','I','J','K','L','M','N','Ñ','O','P','Q','R','S','T','U','V','W','X'],
+            ['Z','A','B','C','D','E','F','G','H','I','J','K','L','M','N','Ñ','O','P','Q','R','S','T','U','V','W','X','Y'],
+        ];
+
         private $alfabeto_sustitucion = [];
         private $alfabeto_invertido = [];
         private $abc;
@@ -94,7 +124,7 @@
                     $this->cifrarAlfabeticamente($this->texto_claro, $this->alfabeto_sustitucion);
                     break;
                 case $this->tipos[1]:
-                    $this->cifrarPoliAlfabeticamente();
+                    $this->cifradoVigenere($this->texto_claro, $this->clave);
                     break;
                     
                 default:
@@ -132,8 +162,65 @@
             return $texto_claro;
         }
 
-        public function cifrarPoliAlfabeticamente(){
+        public function cifradoVigenere($texto, $clave){
+            $txt_sin_espacios = $this->eliminarEspacios($texto);
+            $clave_sin_espacios = $this->eliminarEspacios($clave);
+            $dimension = strlen($txt_sin_espacios);
+            $claves = $this->cargarClaveVigenere($clave_sin_espacios, $dimension);
 
+            $texto_cifrado = "";
+
+            for ($i=0; $i < $dimension; $i++) { 
+                $fil = array_search($txt_sin_espacios[$i], $this->alfabeto);
+                $col = array_search($claves[$i], $this->alfabeto);
+                $texto_cifrado .= $this->alfabeto_vigenere[$fil][$col];
+            }
+            return $texto_cifrado;
+        }
+
+        public function cargarClaveVigenere($clave, $dim_texto_claro){
+            $dim_clave = strlen($clave);
+            $claves_repetidas = [];
+            $j = 0;
+            for ($i=0; $i < $dim_texto_claro; $i++) { 
+                if($j < $dim_clave){
+                    array_push($claves_repetidas, $clave[$j]);
+                    $j++;
+                } else {
+                    $j = 0;
+                    array_push($claves_repetidas, $clave[$j]);
+                    $j++;
+                }
+                
+            }
+            return $claves_repetidas;
+
+        }
+
+        public function cifradoZigZag($mensaje, $filas){
+            $txt_sin_espacios = $this->eliminarEspacios($mensaje);
+            $cantidad_letras = count($txt_sin_espacios);
+            $modulo = strlen($txt_sin_espacios) % $filas;
+            
+            $n_el_ciclo = ($filas*2) - 2;
+
+            $items = [];
+            $cont_ciclo = 1; 
+            for ($i= 0; $i < $cantidad_letras ; $i++) { 
+                if($cont_ciclo <= $n_el_ciclo ){
+                    array_push($items, $txt_sin_espacios);
+                    $items[$i];
+
+                    $cont_ciclo++;
+                }
+                $txt_sin_espacios .= "X";
+            }
+
+            return $txt_sin_espacios;
+        }
+
+        public function eliminarEspacios($texto){
+            return str_replace(' ', '', $texto);
         }
         
         public function cifrarTransposicion($mensaje, $clave){
