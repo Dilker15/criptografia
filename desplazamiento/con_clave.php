@@ -11,18 +11,23 @@
     $alfabetoC = $cifrador->getAlfabeto();
     $alfabeto_invertido = $cifrador->getAlfabetoInvertido();
 
+    
+
     $accion = "";
     $resultado = "";
     $texto_plano = "";
+    $llave = "";
     $desplazamiento = "";
 
     if(isset($_REQUEST["accion"])){
         if($_REQUEST["accion"] == "cifrar" ){
             $accion = $_REQUEST["accion"];
             $texto_plano    = isset($_REQUEST["texto_plano"])   ? utf8_decode($_REQUEST["texto_plano"]) : "";
+            $llave    = isset($_REQUEST["llave"])   ? utf8_decode($_REQUEST["llave"]) : "";
             $desplazamiento = isset($_REQUEST["desplazamiento"])? utf8_decode($_REQUEST["desplazamiento"]) : "";
-            $alfabetoC = $cifrador->lista_Despl($desplazamiento);
-            $resultado = $cifrador->cifrarDesplazamientoPuro($texto_plano, $desplazamiento);
+            $alfabetoC = $cifrador->listaClave($llave);
+
+            $resultado = $cifrador->cifradoPuroConClave($texto_plano, $llave, $desplazamiento);
         }
 
         if($_REQUEST["accion"] == "descifrar" ){
@@ -101,6 +106,11 @@
                     <label for="texto_plano" class="form-label">Texto Plano</label>
                     <input onkeyup="javascript:this.value=this.value.toUpperCase();" type="text" class="form-control" id="texto_plano" name="texto_plano" aria-describedby="textoPlano">
                     <div id="textoPlano" class="form-text">Ingrese el texto a cifrar.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="llave" class="form-label">Llave</label>
+                    <input onkeyup="javascript:this.value=this.value.toUpperCase();" type="text" class="form-control" id="llave" name="llave" aria-describedby="llave">
+                    <div id="llave" class="form-text">Ingrese la llave</div>
                 </div>
                 <div class="mb-3">
                     <label for="desplazamiento" class="form-label">Desplazamiento</label>

@@ -14,6 +14,7 @@
     $accion = "";
     $resultado = "";
     $texto_plano = "";
+    $texto_encriptado = "";
     $filas = "";
 
     if(isset($_REQUEST["accion"])){
@@ -29,7 +30,7 @@
             $accion = $_REQUEST["accion"];
             $texto_encriptado = isset($_REQUEST["texto_encriptado"])? utf8_decode($_REQUEST["texto_encriptado"]) : "";
             $filas = isset($_REQUEST["filas"])? utf8_decode($_REQUEST["filas"]) : "";
-            //$resultado = $cifrador->descifrarDesplazamientoPuro($texto_encriptado, $alfabeto_invertido);
+            $resultado = $cifrador->descifradoZigZag($texto_encriptado, $filas);
         }
     }
 ?>
@@ -127,7 +128,6 @@
         </div>
           
         <div class="col">
-            <!--
             <h4>Descifrado</h4>
             <form action="" method="GET">
                 <input type="hidden" value="descifrar" name="accion">
@@ -136,24 +136,29 @@
                     <input onkeyup="javascript:this.value=this.value.toUpperCase();" type="text" class="form-control" id="texto_encriptado" name="texto_encriptado" aria-describedby="textoEncriptado">
                     <div id="textoEncriptado" class="form-text">Ingrese el texto a descifrar.</div>
                 </div>
+                <div class="mb-3">
+                    <label for="filas" class="form-label">Número de Filas</label>
+                    <input onkeyup="javascript:this.value=this.value.toUpperCase();" type="text" class="form-control" id="filas" value="3" name="filas" aria-describedby="filas">
+                    <div id="filas" class="form-text">Ingrese las posiciones a desplazar</div>
+                </div>
                 <button type="submit" class="btn btn-warning">Descifrar</button>
             </form>
           
-            < ?php 
+            <?php 
                 if($resultado != "" && $accion == "descifrar"){ ?>
                     <div class="row pt-3">
                         <div class="col">
-                            <h5>Descifrado exitosamente el texto encriptado de: <i class="text-secondary">< ?= utf8_encode(strtoupper($texto_encriptado)) ?></i>  a:</h5>
+                            <h5>Descifrado exitosamente el texto encriptado de: <i class="text-secondary"><?= utf8_encode(strtoupper($texto_encriptado)) ?></i>  a:</h5>
                             <h4 class="text-success">
-                                < ?= utf8_encode($resultado) ?>       
+                                <?= utf8_encode($resultado) ?>       
                             </h4>
                             
                         </div>
                     </div>
-                    < ?php 
+                    <?php 
                 }
             ?>  
-            -->            
+                  
         </div>
     </div>
 </div>

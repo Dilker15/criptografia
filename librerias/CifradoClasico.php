@@ -256,6 +256,40 @@
             return $texto_cifrado;
         }
 
+        public function descifradoZigZag($mensaje, $n_filas){
+            $txt_sin_espacios = $this->eliminarEspacios($mensaje);
+            $dimension = strlen($txt_sin_espacios);
+            $texto_claro = "";
+
+            $matriz = [];
+            $i = 0;
+            $sw = 1;
+
+            for ($j=0; $j < $dimension; $j++) {
+
+                if($i == $n_filas - 1){
+                    $sw = -1;
+                }
+
+                if($i == 0){
+                    $sw = 1;
+                }
+
+                $matriz[$i][$j] = $txt_sin_espacios[$j];
+                $i = $i + $sw;
+            }
+            
+            for ($j=0; $j < $dimension; $j++) { 
+                for ($i=0; $i < $n_filas ; $i++) { 
+                    if(isset($matriz[$i][$j])){
+                        $texto_claro .= $matriz[$i][$j];
+                    }
+                }
+            }
+
+            return $texto_claro;
+        }
+
         public function eliminarEspacios($texto){
             return str_replace(' ', '', $texto);
         }
@@ -339,9 +373,14 @@
             }
 
             for ($i=0; $i < $desp ; $i++) {
-                array_push($cola, $cola[$i]);
-                array_splice($cola, 1, 0);
+                /*array_push($cola, $cola[0]);
+                array_splice($cola, 0, 0);*/
+                $aux = $cola[$i];
+                array_push($cola, $aux);
+                array_splice($cola, 1, $i);
             }
+
+            
 
             $lista_llave = [];
             $cant = count($cola);
@@ -367,13 +406,16 @@
         public function listaClave($llave){
             $lista_llave = [];
             $llave_Sin_Rep =  $this->llaveSinRepeticion($llave);
+
+            
             
             for ($i = 0; $i < strlen($llave_Sin_Rep); $i++) {
                 array_push($lista_llave, $llave_Sin_Rep[$i]);
             }
+
+            $llaveSinRep = str_split($llave_Sin_Rep);
             for ($i = 0; $i < count($this->abc); $i++) {
-                $llave_Sin_Rep = str_split($llave_Sin_Rep);
-                $pos = array_search($this->abc[$i], $llave_Sin_Rep);
+                $pos = array_search($this->abc[$i], $llaveSinRep);
                 if($pos === false){
                     array_push($lista_llave, $this->abc[$i]);
                 }
