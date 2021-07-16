@@ -26,7 +26,7 @@
             $texto_plano    = isset($_REQUEST["texto_plano"])   ? utf8_decode($_REQUEST["texto_plano"]) : "";
             $llave    = isset($_REQUEST["llave"])   ? utf8_decode($_REQUEST["llave"]) : "";
             $desplazamiento = isset($_REQUEST["desplazamiento"])? utf8_decode($_REQUEST["desplazamiento"]) : "";
-            $alfabetoC = $cifrador->listaClave($llave);
+            $alfabetoC = $cifrador->getAlfabetoDespPuroConClave($llave, $desplazamiento);
             $resultado = $cifrador->cifradoPuroConClave($texto_plano, $llave, $desplazamiento);
         }
 
@@ -35,6 +35,7 @@
             $texto_encriptado = isset($_REQUEST["texto_encriptado"])? utf8_decode($_REQUEST["texto_encriptado"]) : "";
             $llave    = isset($_REQUEST["llave"])   ? utf8_decode($_REQUEST["llave"]) : "";
             $desplazamiento = isset($_REQUEST["desplazamiento"])? utf8_decode($_REQUEST["desplazamiento"]) : "";
+            $alfabetoC = $cifrador->getAlfabetoDespPuroConClave($llave, $desplazamiento);
             $resultado = $cifrador->descifradoPuroConClave($texto_encriptado, $llave, $desplazamiento);
         }
     }
