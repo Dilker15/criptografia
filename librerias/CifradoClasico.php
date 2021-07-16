@@ -2,35 +2,7 @@
 
     class CifradoClasico {
 
-        private $alfabeto = [
-            0  => 'A',
-            1  => 'B',
-            2  => 'C',
-            3  => 'D',
-            4  => 'E',
-            5  => 'F',
-            6  => 'G',
-            7  => 'H',
-            8  => 'I',
-            9  => 'J',
-            10 => 'K', 
-            11 => 'L',
-            12 => 'M',
-            13 => 'N',
-            14 => 'Ñ', 
-            15 => 'O',
-            16 => 'P',
-            17 => 'Q',
-            18 => 'R',
-            19 => 'S',
-            20 => 'T',
-            21 => 'U',
-            22 => 'V',
-            23 => 'W',
-            24 => 'X',
-            25 => 'Y',
-            26 => 'Z'
-        ];
+        private $alfabeto = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','Ñ','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
 
         private $alfabeto_vigenere = [
             ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','Ñ','O','P','Q','R','S','T','U','V','W','X','Y','Z'],
@@ -66,14 +38,7 @@
         private $alfabeto_invertido = [];
         private $abc;
 
-        public $texto_claro;
-        public $texto_cifrado;
-        private $tipo_seleccionado;
-        
-        private $tipos = [
-            "0" => "Mono alfabética",
-            "1" => "Poli alfabética",
-        ];
+       
 
         function __construct() {
             $this->abc = $this->alfabeto;
@@ -82,19 +47,6 @@
         public function getTipoCifrado($tipo) {
             if($this->getTipoCifrado($tipo)){
                 return $this->tipos[$this->tipo_seleccionado];
-            }
-        }
-
-        public function setTipoCifrado($tipo) {
-            switch ($tipo) {
-                case 0: 
-                    $this->tipo_seleccionado = $this->tipos[$tipo];
-                    break;
-                case 1: 
-                    $this->tipo_seleccionado = $this->tipos[$tipo];
-                    break;
-                default:                
-                    return false;
             }
         }
 
@@ -196,10 +148,7 @@
                 $texto_cifrado .= $this->alfabeto[$col];
             }
             return $texto_cifrado;
-        }
-
-
-        
+        }        
 
         public function cargarClaveVigenere($clave, $dim_texto_claro){
             $dim_clave = strlen($clave);
@@ -294,7 +243,7 @@
             return str_replace(' ', '', $texto);
         }
         
-        public function cifrarTransposicion($mensaje, $clave){
+        public function cifradoTransposicionGrupo($mensaje, $clave){
             $noSpace = str_replace(' ', '', $mensaje);
             $letras_Msm = str_split($noSpace);
             $orden = str_split($clave);
