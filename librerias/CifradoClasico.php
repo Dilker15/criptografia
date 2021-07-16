@@ -326,9 +326,40 @@
             
             return $meh;
         }
-        
-        public function alfabetoDespPuroClave(){
+
+        public function descifradoPuroConClave($mensaje, $llave, $desp){
+            $lista_llave = $this->listaClave($llave);
+            $cola = [];
+            for ($i=count($lista_llave)-1; $i >= 0; $i--) { 
+                array_push($cola, $lista_llave[$i]);
+            }
+
+            for ($i=0; $i < $desp ; $i++) {
+                $aux = $cola[0];
+                array_push($cola, $aux);
+                array_splice($cola, 0, 1);                
+            }
+
+            $lista_llave = [];
+            $cant = count($cola);
+            for ($i=0; $i < $cant ; $i++) { 
+                array_push($lista_llave, $cola[$i]);
+            }
+
+            $lista_llave = array_reverse($lista_llave);
             
+            $letras_Msm = str_split($this->eliminarEspacios($mensaje));
+
+            $meh = ""; 
+
+            for ($i = 0; $i < count($letras_Msm); $i++) {
+                $pos = array_search($letras_Msm[$i], $lista_llave);
+                if ($pos !== false) {
+                    $meh .= $this->abc[$pos];
+                }
+            }
+            
+            return $meh;
         }
         
         public function mostrarArray($array){

@@ -16,6 +16,7 @@
     $accion = "";
     $resultado = "";
     $texto_plano = "";
+    $texto_encriptado = "";
     $llave = "";
     $desplazamiento = "";
 
@@ -26,15 +27,15 @@
             $llave    = isset($_REQUEST["llave"])   ? utf8_decode($_REQUEST["llave"]) : "";
             $desplazamiento = isset($_REQUEST["desplazamiento"])? utf8_decode($_REQUEST["desplazamiento"]) : "";
             $alfabetoC = $cifrador->listaClave($llave);
-
             $resultado = $cifrador->cifradoPuroConClave($texto_plano, $llave, $desplazamiento);
         }
 
         if($_REQUEST["accion"] == "descifrar" ){
             $accion = $_REQUEST["accion"];
             $texto_encriptado = isset($_REQUEST["texto_encriptado"])? utf8_decode($_REQUEST["texto_encriptado"]) : "";
+            $llave    = isset($_REQUEST["llave"])   ? utf8_decode($_REQUEST["llave"]) : "";
             $desplazamiento = isset($_REQUEST["desplazamiento"])? utf8_decode($_REQUEST["desplazamiento"]) : "";
-            //$resultado = $cifrador->descifrarDesplazamientoPuro($texto_encriptado, $alfabeto_invertido);
+            $resultado = $cifrador->descifradoPuroConClave($texto_encriptado, $llave, $desplazamiento);
         }
     }
 ?>
@@ -143,6 +144,16 @@
                     <label for="texto_encriptado" class="form-label">Texto Encriptado</label>
                     <input onkeyup="javascript:this.value=this.value.toUpperCase();" type="text" class="form-control" id="texto_encriptado" name="texto_encriptado" aria-describedby="textoEncriptado">
                     <div id="textoEncriptado" class="form-text">Ingrese el texto a descifrar.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="llave" class="form-label">Llave</label>
+                    <input onkeyup="javascript:this.value=this.value.toUpperCase();" type="text" class="form-control" id="llave" name="llave" aria-describedby="llave">
+                    <div id="llave" class="form-text">Ingrese la llave</div>
+                </div>
+                <div class="mb-3">
+                    <label for="desplazamiento" class="form-label">Desplazamiento</label>
+                    <input onkeyup="javascript:this.value=this.value.toUpperCase();" type="text" class="form-control" id="desplazamiento" name="desplazamiento" aria-describedby="desplazamiento">
+                    <div id="desplazamiento" class="form-text">Ingrese las posiciones a desplazar</div>
                 </div>
                 <button type="submit" class="btn btn-warning">Descifrar</button>
             </form>
