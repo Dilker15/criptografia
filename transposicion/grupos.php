@@ -35,11 +35,12 @@
             
             $clave = isset($_REQUEST["clave"])? utf8_decode($_REQUEST["clave"]) : "";
             //$resultado = $cifrador->descifrarAlfabeticamente($texto_encriptado, $alfabeto_invertido);
-            $a=new cifradoGrupo($texto_plano, $clave);
+            $a=new cifradoGrupo($texto_encriptado, $clave);
             $a->llenado();
             $a->descifrado();
 
             $resultado = $a->descifrar;
+            
         }
     }
 ?>
