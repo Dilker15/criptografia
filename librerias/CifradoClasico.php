@@ -34,7 +34,6 @@
             ['Z','A','B','C','D','E','F','G','H','I','J','K','L','M','N','Ñ','O','P','Q','R','S','T','U','V','W','X','Y'],
         ];
 
-        private $alfabeto_sustitucion = [];
         private $alfabeto_invertido = [];
         private $abc;
 
@@ -42,12 +41,6 @@
 
         function __construct() {
             $this->abc = $this->alfabeto;
-        }
-
-        public function getTipoCifrado($tipo) {
-            if($this->getTipoCifrado($tipo)){
-                return $this->tipos[$this->tipo_seleccionado];
-            }
         }
 
         public function getAlfabeto(){
@@ -68,21 +61,6 @@
                 $this->setAlfabetoInvertido();                
             } 
             return $this->alfabeto_invertido;
-        }
-
-        public function cifrar(){
-            switch ($this->tipo_seleccionado) {
-                case $this->tipos[0]:
-                    $this->cifrarAlfabeticamente($this->texto_claro, $this->alfabeto_sustitucion);
-                    break;
-                case $this->tipos[1]:
-                    $this->cifradoVigenere($this->texto_claro, $this->clave);
-                    break;
-                    
-                default:
-                    # code...
-                    break;
-            }
         }
 
         public function cifrarAlfabeticamente($texto_claro, $alfabeto){
@@ -322,14 +300,10 @@
             }
 
             for ($i=0; $i < $desp ; $i++) {
-                /*array_push($cola, $cola[0]);
-                array_splice($cola, 0, 0);*/
-                $aux = $cola[$i];
+                $aux = $cola[0];
                 array_push($cola, $aux);
-                array_splice($cola, 1, $i);
+                array_splice($cola, 0, 1);                
             }
-
-            
 
             $lista_llave = [];
             $cant = count($cola);
@@ -338,7 +312,9 @@
             }
 
             $lista_llave = array_reverse($lista_llave);
-            $letras_Msm = str_split($mensaje);
+            
+            $letras_Msm = str_split($this->eliminarEspacios($mensaje));
+
             $meh = ""; 
 
             for ($i = 0; $i < count($letras_Msm); $i++) {
@@ -350,19 +326,85 @@
             
             return $meh;
         }
+
+        public function descifradoPuroConClave($mensaje, $llave, $desp){
+            $lista_llave = $this->listaClave($llave);
+            $cola = [];
+            for ($i=count($lista_llave)-1; $i >= 0; $i--) { 
+                array_push($cola, $lista_llave[$i]);
+            }
+
+            for ($i=0; $i < $desp ; $i++) {
+                $aux = $cola[0];
+                array_push($cola, $aux);
+                array_splice($cola, 0, 1);                
+            }
+
+            $lista_llave = [];
+            $cant = count($cola);
+            for ($i=0; $i < $cant ; $i++) { 
+                array_push($lista_llave, $cola[$i]);
+            }
+
+            $lista_llave = array_reverse($lista_llave);
+            
+            $letras_Msm = str_split($this->eliminarEspacios($mensaje));
+
+            $meh = ""; 
+
+            for ($i = 0; $i < count($letras_Msm); $i++) {
+                $pos = array_search($letras_Msm[$i], $lista_llave);
+                if ($pos !== false) {
+                    $meh .= $this->abc[$pos];
+                }
+            }
+            
+            return $meh;
+        }
+
+        public function getAlfabetoDespPuroConClave($llave, $desp){
+            $lista_llave = $this->listaClave($llave);
+            $cola = [];
+            for ($i=count($lista_llave)-1; $i >= 0; $i--) { 
+                array_push($cola, $lista_llave[$i]); 
+            }
+
+            for ($i=0; $i < $desp ; $i++) {
+                $aux = $cola[0];
+                array_push($cola, $aux);
+                array_splice($cola, 0, 1);                
+            }
+
+            $lista_llave = [];
+            $cant = count($cola);
+            for ($i=0; $i < $cant ; $i++) { 
+                array_push($lista_llave, $cola[$i]);
+            }
+
+            $lista_llave = array_reverse($lista_llave);
+
+            return $lista_llave;
+        }
         
+        public function mostrarArray($array){
+            $texto = "";
+            for ($i=0; $i < count($array); $i++) { 
+                $texto .= $array[$i];
+            }
+            return $texto;
+        }
         
         public function listaClave($llave){
             $lista_llave = [];
             $llave_Sin_Rep =  $this->llaveSinRepeticion($llave);
 
-            
+            $llaveSinRep = str_split($llave_Sin_Rep);
             
             for ($i = 0; $i < strlen($llave_Sin_Rep); $i++) {
                 array_push($lista_llave, $llave_Sin_Rep[$i]);
             }
 
-            $llaveSinRep = str_split($llave_Sin_Rep);
+            
             for ($i = 0; $i < count($this->abc); $i++) {
                 $pos = array_search($this->abc[$i], $llaveSinRep);
                 if($pos === false){
@@ -374,8 +416,10 @@
         }
         
         public function llaveSinRepeticion($llave){
+            $llave = $this->eliminarEspacios($llave);
             $lista_llave = [];
             $meh = "";
+
             $letras = str_split($llave);
             
             for ($i = 0; $i < count($letras); $i++) {
