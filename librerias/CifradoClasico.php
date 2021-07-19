@@ -63,6 +63,10 @@
             return $this->alfabeto_invertido;
         }
 
+        public function getAlfabetoVigenere(){
+            return $this->alfabeto_vigenere;
+        }
+
         public function cifrarAlfabeticamente($texto_claro, $alfabeto){
             $texto_cifrado = "";
             $texto_claro = strtoupper($texto_claro);
@@ -94,9 +98,10 @@
 
         public function cifradoVigenere($texto, $clave){
             $txt_sin_espacios = $this->eliminarEspacios($texto);
-            $clave_sin_espacios = $this->eliminarEspacios($clave);
+
             $dimension = strlen($txt_sin_espacios);
-            $claves = $this->cargarClaveVigenere($clave_sin_espacios, $dimension);
+
+            $claves = $this->cargarClaveVigenere($texto, $clave);
 
             $texto_cifrado = "";
 
@@ -110,11 +115,10 @@
 
         public function descifradoVigenere($texto, $clave){
             $txt_sin_espacios = $this->eliminarEspacios($texto);
-            $clave_sin_espacios = $this->eliminarEspacios($clave);
 
             $dimension = strlen($txt_sin_espacios);
 
-            $claves = $this->cargarClaveVigenere($clave_sin_espacios, $dimension);
+            $claves = $this->cargarClaveVigenere($texto, $clave);
 
             $texto_cifrado = "";
 
@@ -128,17 +132,24 @@
             return $texto_cifrado;
         }        
 
-        public function cargarClaveVigenere($clave, $dim_texto_claro){
-            $dim_clave = strlen($clave);
+        public function cargarClaveVigenere($texto, $clave){
+            
+            $txt_sin_espacios = $this->eliminarEspacios($texto);
+            $clave_sin_espacios = $this->eliminarEspacios($clave);
+            
+            $dim_texto_claro = strlen($txt_sin_espacios);
+            $dim_clave = strlen($clave_sin_espacios);
+            
             $claves_repetidas = [];
             $j = 0;
+            
             for ($i=0; $i < $dim_texto_claro; $i++) { 
                 if($j < $dim_clave){
-                    array_push($claves_repetidas, $clave[$j]);
+                    array_push($claves_repetidas, $clave_sin_espacios[$j]);
                     $j++;
                 } else {
                     $j = 0;
-                    array_push($claves_repetidas, $clave[$j]);
+                    array_push($claves_repetidas, $clave_sin_espacios[$j]);
                     $j++;
                 }
                 

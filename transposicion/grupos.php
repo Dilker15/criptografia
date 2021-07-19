@@ -30,11 +30,8 @@
 
         if($_REQUEST["accion"] == "descifrar" ){
             $accion = $_REQUEST["accion"];
-            // $texto_plano = isset($_REQUEST["texto_plano"])? utf8_decode($_REQUEST["texto_plano"]) : "";
             $texto_encriptado = isset($_REQUEST["texto_encriptado"])? utf8_decode($_REQUEST["texto_encriptado"]) : "";
-            
             $clave = isset($_REQUEST["clave"])? utf8_decode($_REQUEST["clave"]) : "";
-            //$resultado = $cifrador->descifrarAlfabeticamente($texto_encriptado, $alfabeto_invertido);
             $a=new cifradoGrupo($texto_encriptado, $clave);
             $a->llenado();
             $a->descifrado();

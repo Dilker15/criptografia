@@ -74,9 +74,9 @@
                         <a href="<?= constant("URL") ?>sustitucion/mono_alfabetica.php">
                             <button type="button" class="btn btn-danger">Mono alfabética</button>
                         </a>
-                        <!-- <a href="< ?= constant("URL") ?>sustitucion/poli_alfabetica.php">
+                        <a href="<?= constant("URL") ?>sustitucion/poli_alfabetica.php">
                             <button type="button" class="btn btn-danger">Poli alfabética</button>
-                        </a>-->
+                        </a>
                     </div>
                 </div>
             </div>
