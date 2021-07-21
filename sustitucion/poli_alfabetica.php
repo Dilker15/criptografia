@@ -124,9 +124,8 @@
             <table class="table">
                 <tr>
                     <td></td>
-                    <?php 
+                    <?php                         
                         $items_texto = count($texto); 
-
                         for ($i=0; $i < $items_texto; $i++) { ?>
                             <td><?= $i; ?></td>
                         <?php }

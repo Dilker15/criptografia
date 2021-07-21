@@ -193,30 +193,98 @@
 
             return $texto_cifrado;
         }
-
+        
+        
+        
+        
+        
+        
+        
+        
+        
         public function descifradoZigZag($mensaje, $n_filas){
             $txt_sin_espacios = $this->eliminarEspacios($mensaje);
             $dimension = strlen($txt_sin_espacios);
-            $texto_claro = "";
 
+            $ciclo = ($n_filas * 2) - 2;
+
+            $letras_sobrantes = $dimension % $ciclo;
+            $n_ciclos = intdiv($dimension, $ciclo);
+            $ciclos_fila = $ciclo;
             $matriz = [];
+            $columna = 0;            
             $i = 0;
-            $sw = 1;
-
-            for ($j=0; $j < $dimension; $j++) {
-
-                if($i == $n_filas - 1){
-                    $sw = -1;
-                }
-
-                if($i == 0){
-                    $sw = 1;
-                }
-
-                $matriz[$i][$j] = $txt_sin_espacios[$j];
-                $i = $i + $sw;
-            }
             
+            for ($fila=0; $fila < $n_filas; $fila++) { 
+                $c = 0;    
+                $columna = $fila;
+                
+                while ($c < $n_ciclos) {
+                    if($fila == 0){
+                        $matriz[$fila][$columna] = $txt_sin_espacios[$i];    
+                        $columna = $columna + $ciclo;
+                        $i++;
+                        $c++;
+                        if($c == $n_ciclos){
+                            if($letras_sobrantes > 0){
+                                $matriz[$fila][$columna] = $txt_sin_espacios[$i];
+                                $letras_sobrantes--;
+                                $i++;
+                            }
+                        } 
+                    }
+                    if($fila > 0 && $fila < $n_filas - 1){
+                        if($columna <= $dimension){
+                            $matriz[$fila][$columna] = $txt_sin_espacios[$i];    
+                            $i++;
+                        }
+                        if(($columna + $ciclos_fila) <= $dimension){
+                            $matriz[$fila][$columna + $ciclos_fila] = $txt_sin_espacios[$i];    
+                            $i++;
+                        }
+
+                        $columna = $columna + $ciclo;
+                        $c++;
+
+                        if($c == $n_ciclos){
+                            if($letras_sobrantes > 0 ){
+                                if($columna <= $dimension){
+                                    $matriz[$fila][$columna] = $txt_sin_espacios[$i];    
+                                    $i++;
+                                    $letras_sobrantes--;
+                                }  
+                            } 
+                            if($letras_sobrantes > 0 ){
+                                if(($columna + $ciclos_fila) <= $dimension){
+                                    $matriz[$fila][$columna] = $txt_sin_espacios[$i];    
+                                    $i++;
+                                    $letras_sobrantes--;
+                                }                                
+                            } 
+                        } 
+                    }
+
+                    if($fila == $n_filas-1){
+                        $matriz[$fila][$columna] = $txt_sin_espacios[$i];    
+                        $columna = $columna + $ciclo;
+                        $i++;
+                        $c++;
+                        if($c == $n_ciclos){
+                            if($letras_sobrantes > 0){
+                                if($columna <= $dimension){
+                                    $matriz[$fila][$columna] = $txt_sin_espacios[$i];
+                                    $letras_sobrantes--;
+                                    $i++;
+                                }
+                            }
+                        } 
+                    }
+
+                }
+                $ciclos_fila = $ciclos_fila - 2;
+            }
+
+            $texto_claro = "";
             for ($j=0; $j < $dimension; $j++) { 
                 for ($i=0; $i < $n_filas ; $i++) { 
                     if(isset($matriz[$i][$j])){
@@ -225,7 +293,8 @@
                 }
             }
 
-            return $texto_claro;
+            return $texto_claro;         
+         
         }
 
         public function eliminarEspacios($texto){

@@ -52,45 +52,47 @@
             </div>
         </div>
         <div class="col">
+            <!--
             <h1></h1>
             <h4>Alfabeto Base</h4>
             <table class="table">
                 <tr>
                     <td></td>
-                    <?php 
+                    < ?php 
                         $items_maximo = count($alfabetoM); 
 
                         for ($i=0; $i < $items_maximo; $i++) { ?>
-                            <td><?= $i; ?></td>
-                        <?php }
+                            <td>< ?= $i; ?></td>
+                        < ?php }
                     ?>
                 </tr>
                 
                 <tr>
                     <td>M<sub>i</sub></td>
-                    <?php 
+                    < ?php 
                         $items_alfabetoM = count($alfabetoM); 
                         for ($i=0; $i < $items_alfabetoM; $i++) { ?>
-                            <td><?= utf8_encode($alfabetoM[$i]); ?></td>
-                        <?php }
+                            <td>< ?= utf8_encode($alfabetoM[$i]); ?></td>
+                        < ?php }
                     ?>
                 </tr>
-                <?php
+                < ?php
                     if($alfabetoC != []) {?>
                         <tr>
                             <td>C<sub>i</sub></td>
-                            <?php                     
+                            < ?php                     
                                 $items_alfabetoC = count($alfabetoC); 
                                 for ($i=0; $i < $items_alfabetoC; $i++) { ?>
-                                    <td><?= utf8_encode($alfabetoC[$i]); ?></td>
-                                <?php }
+                                    <td>< ?= utf8_encode($alfabetoC[$i]); ?></td>
+                                < ?php }
                             ?>
                         </tr>  
-                        <?php 
+                        < ?php 
                     }
 
                 ?>                
             </table>
+                -->
         </div>
     </div>
     <div class="row">
@@ -126,8 +128,9 @@
             ?>
 
         </div>
-          
+        
         <div class="col">
+            
             <h4>Descifrado</h4>
             <form action="" method="GET">
                 <input type="hidden" value="descifrar" name="accion">
@@ -158,8 +161,9 @@
                     <?php 
                 }
             ?>  
-                  
+            
         </div>
+            
     </div>
 </div>
 
