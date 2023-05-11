@@ -1,9 +1,10 @@
 <?php require_once("header.php"); ?>
     
-    <div class="container">
+    <div class="container m-0" style="width:100vh">
         <?php include_once("menu_top.php") ?>
-
-        <div class="card">
+        <div class="row justify-content-md-center my-5" >
+            <div class="col col-lg-6">
+            <div class="card">
             <div class="card-header">
                 Criptografía Clásica
             </div>
@@ -15,9 +16,9 @@
 
 
 
-        <div class="row">
-            <div class="col">
-                <div class="card">
+        <div class="row d-flex flex-column">
+            <div class="col  mt-4">
+                <div class="card w-75 m-auto">
                     <div class="card-header bg-dark text-light">                        
                     </div>
                     <div class="card-body">
@@ -35,8 +36,8 @@
                 </div>
                 
             </div>
-            <div class="col">
-                <div class="card">
+            <div class="col mt-4">
+                <div class="card w-75 m-auto">
                     <div class="card-header bg-warning text-dark">                        
                     </div>
                     <div class="card-body">
@@ -62,8 +63,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col">
-                <div class="card">
+            <div class="col  mt-4">
+                <div class="card w-75 m-auto">
                     <div class="card-header bg-danger text-dark">                        
                     </div>
                     <div class="card-body">
@@ -82,5 +83,8 @@
             </div>
         </div>
     </div>
+            </div>
+        </div>
+        
 
 <?php require_once("footer.php"); ?>
