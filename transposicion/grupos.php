@@ -45,51 +45,54 @@
 
 <div class="container">
     <?php include_once("../menu_top.php") ?>
-    <div class="row">
-        <div class="card">
-            <div class="card-header bg-warning text-light">
-                <h1>Cifrado por Transposicion</h1>
-            </div>
-            <div class="card-body">
-                <h3 class="card-title">Cifrado por Transposicion por Grupos</h3>
-                <p class="card-text"></p>
+    <div class="row mx-4 d-flex flex-column justify-content-center align-items-center">
+        <div class="col">
+            <div class="card p-0">
+                <div class="card-header bg-warning text-light">
+                    <h1>Cifrado por Transposicion</h1>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Cifrado por Transposicion por Grupos</h3>
+                    <p class="card-text"></p>
+                </div>
             </div>
         </div>
-        <div class="col">
-            <h1></h1>
-            <h3>Alfabeto Base</h3>
-            <table class="table">
-                <tr>
-                    <td></td>
-                    <?php 
-                        $items_alfabeto = count($alfabeto); 
+            <div class="col w-50">
+                <h1></h1>
+                <h3>Alfabeto Base</h3>
+                <table class="table">
+                    <tr>
+                        <td></td>
+                        <?php 
+                            $items_alfabeto = count($alfabeto); 
 
-                        for ($i=0; $i < $items_alfabeto; $i++) { ?>
-                            <td><?= $i; ?></td>
-                        <?php }
-                    ?>
-                </tr>
-                <tr>
-                    <td>M<sub>i</sub></td>
-                    <?php 
-                        for ($i=0; $i < $items_alfabeto; $i++) { ?>
-                            <td><?= utf8_encode($alfabeto[$i]); ?></td>
-                        <?php }
-                    ?>
-                </tr>
-                <tr>
-                    <td>C<sub>i</sub></td>
-                    <?php 
-                        for ($i=0; $i < $items_alfabeto; $i++) { ?>
-                            <td><?= utf8_encode($alfabeto_invertido[$i]); ?></td>
-                        <?php }
-                    ?>
-                </tr>
-            </table>
+                            for ($i=0; $i < $items_alfabeto; $i++) { ?>
+                                <td><?= $i; ?></td>
+                            <?php }
+                        ?>
+                    </tr>
+                    <tr>
+                        <td>M<sub>i</sub></td>
+                        <?php 
+                            for ($i=0; $i < $items_alfabeto; $i++) { ?>
+                                <td><?= utf8_encode($alfabeto[$i]); ?></td>
+                            <?php }
+                        ?>
+                    </tr>
+                    <tr>
+                        <td>C<sub>i</sub></td>
+                        <?php 
+                            for ($i=0; $i < $items_alfabeto; $i++) { ?>
+                                <td><?= utf8_encode($alfabeto_invertido[$i]); ?></td>
+                            <?php }
+                        ?>
+                    </tr>
+                </table>
+            </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col">
+    <div class="row mx-4 mb-4 d-flex flex-column justify-content-center align-items-center">
+        <div class="col w-75">
             <h4>Cifrado</h4>
             <form action="" method="GET">
                 <input type="hidden" value="cifrar" name="accion">
@@ -120,7 +123,7 @@
             ?>
 
         </div>
-        <div class="col">
+        <div class="col w-75">
             <h4>Descifrado</h4>
             <form action="" method="GET">
                 <input type="hidden" value="descifrar" name="accion">

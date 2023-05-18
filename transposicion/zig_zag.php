@@ -41,62 +41,22 @@
 
 <div class="container">
     <?php include_once("../menu_top.php") ?>
-    <div class="row">
-        <div class="card">
-            <div class="card-header bg-dark text-light">
-                <h1>Cifrado por Transposicion</h1>
-            </div>
-            <div class="card-body">
-                <h3 class="card-title">Cifrado por Zig Zag</h3>
-                <p class="card-text"></p>
-            </div>
-        </div>
+    <div class="row mx-4 d-flex flex-column justify-content-center align-items-center">
         <div class="col">
-            <!--
-            <h1></h1>
-            <h4>Alfabeto Base</h4>
-            <table class="table">
-                <tr>
-                    <td></td>
-                    < ?php 
-                        $items_maximo = count($alfabetoM); 
-
-                        for ($i=0; $i < $items_maximo; $i++) { ?>
-                            <td>< ?= $i; ?></td>
-                        < ?php }
-                    ?>
-                </tr>
-                
-                <tr>
-                    <td>M<sub>i</sub></td>
-                    < ?php 
-                        $items_alfabetoM = count($alfabetoM); 
-                        for ($i=0; $i < $items_alfabetoM; $i++) { ?>
-                            <td>< ?= utf8_encode($alfabetoM[$i]); ?></td>
-                        < ?php }
-                    ?>
-                </tr>
-                < ?php
-                    if($alfabetoC != []) {?>
-                        <tr>
-                            <td>C<sub>i</sub></td>
-                            < ?php                     
-                                $items_alfabetoC = count($alfabetoC); 
-                                for ($i=0; $i < $items_alfabetoC; $i++) { ?>
-                                    <td>< ?= utf8_encode($alfabetoC[$i]); ?></td>
-                                < ?php }
-                            ?>
-                        </tr>  
-                        < ?php 
-                    }
-
-                ?>                
-            </table>
-                -->
+            <div class="card p-0">
+                <div class="card-header bg-dark text-light">
+                    <h1>Cifrado por Transposicion</h1>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Cifrado por Zig Zag</h3>
+                    <p class="card-text"></p>
+                </div>
+            </div>
         </div>
+    
     </div>
-    <div class="row">
-        <div class="col">
+    <div class="row mx-4 mb-4 d-flex flex-column justify-content-center align-items-center">
+        <div class="col w-75">
             <h4>Cifrado</h4>
             <form action="" method="GET">
                 <input type="hidden" value="cifrar" name="accion">
@@ -129,7 +89,7 @@
 
         </div>
         
-        <div class="col">
+        <div class="col w-75">
             
             <h4>Descifrado</h4>
             <form action="" method="GET">
