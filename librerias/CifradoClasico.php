@@ -326,6 +326,7 @@
             $meh = "";
             $listaDespl = $this->lista_Despl($desplazamiento);
             $letras = str_split($mensaje);
+            
 
             for ($i = 0; $i < count($letras); $i++) {
                 $pos = array_search($letras[$i], $this->abc);
@@ -343,6 +344,7 @@
             $letras = str_split($mensaje);
 
             for ($i = 0; $i < count($letras); $i++) {
+                printf($letras[$i]);
                 $pos = array_search($letras[$i], $listaDespl);
                 if ($pos !== false) {
                     $meh .= $this->abc[$pos];
@@ -353,22 +355,18 @@
         }
         
         public function lista_Despl($despl){
-            $lista_Final = [];
+            
             $lista_Despl = [];
             
             $lista_Despl = $this->abc;
             
             for ($j = 0; $j < $despl; $j++) {
-                $aux = $lista_Despl[$j];
+                $aux = $lista_Despl[0];
                 array_push($lista_Despl, $aux);
-                array_splice($lista_Despl, 1, $j);
+                array_shift($lista_Despl);
             }
             
-            $cant = count($lista_Despl);
-            for ($i = 0; $i < $cant; $i++) {
-                array_push($lista_Final, $lista_Despl[$i]);                
-            }
-            return $lista_Final;
+            return $lista_Despl;
         }
     
 
