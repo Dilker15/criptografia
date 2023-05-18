@@ -85,6 +85,7 @@
                                 <?php }
                             ?>
                         </tr>  
+                        <td><?= count($alfabetoC); ?></td>
                         <?php 
                     }
 
