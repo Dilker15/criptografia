@@ -19,10 +19,10 @@
         <div class="row d-flex flex-column">
             <div class="col  mt-4">
                 <div class="card w-75 m-auto">
-                    <div class="card-header bg-dark text-light">                        
+                    <div class="card-header bg-dark text-light">    
+                        <h5 class="card-title">Cifra de Desplazamiento</h5>                    
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title">Cifra de Desplazamiento</h5>
                         <p class="card-text">Este cifrado se basa principalmente en desplazamientos sobre un alfabeto.</p>
                     </div>
                     <div class="card-footer">
@@ -38,10 +38,10 @@
             </div>
             <div class="col mt-4">
                 <div class="card w-75 m-auto">
-                    <div class="card-header bg-warning text-dark">                        
+                    <div class="card-header bg-warning text-light">   
+                        <h5 class="card-title">Cifra por Transposición</h5>                     
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title">Cifra por Transposición</h5>
                         <p class="card-text"> método de cifra que consiste en cambiar de lugar los elementos del texto en claro en el criptrograma</p>
                     </div>
                     <div class="card-footer">
@@ -65,10 +65,11 @@
             </div>
             <div class="col  mt-4">
                 <div class="card w-75 m-auto">
-                    <div class="card-header bg-danger text-dark">                        
+                    <div class="card-header bg-danger text-light">  
+                    <h5 class="card-title">Sustitución</h5>
+                      
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title">Sustitución</h5>
                         <p class="card-text">son los que han tenido un mayor desarrollo en la historia de la criptografía clásica</p>
                     </div>
                     <div class="card-footer">

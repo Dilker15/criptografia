@@ -47,7 +47,7 @@
 
 <div class="container">
     <?php include_once("../menu_top.php") ?>
-    <div class="row">
+    <div class="row d-flex flex-column">
         <div class="card">
             <div class="card-header bg-dark text-light">
                 <h1>Cifrado por Desplazamiento</h1>

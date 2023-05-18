@@ -1,5 +1,5 @@
 <?php 
-    define("URL", "http://localhost/criptografia_mejora/");
+    define("URL", "http://localhost/criptografia/");
 ?>
 <!DOCTYPE html>
 <html lang="en">
