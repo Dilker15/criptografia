@@ -84,9 +84,9 @@
                 if($resultado != "" && $accion == "cifrar"){ ?>
                     <div class="row pt-3">
                         <div class="col">
-                            <h5>Cifrado exitosamente el texto de: <i class="text-secondary"><?= utf8_encode(strtoupper($texto_plano)) ?></i>  a:</h5>
+                            <h5>Cifrado exitosamente el texto de: <i class="text-secondary"><?= (strtoupper($texto_plano)) ?></i>  a:</h5>
                             <h4 class="text-success">
-                                <?= utf8_encode($resultado) ?>       
+                                <?= ($resultado) ?>       
                             </h4>
                             
                         </div>
@@ -117,9 +117,9 @@
                 if($resultado != "" && $accion == "descifrar"){ ?>
                     <div class="row pt-3">
                         <div class="col">
-                            <h5>Descifrado exitosamente el texto encriptado de: <i class="text-secondary"><?= utf8_encode(strtoupper($texto_encriptado)) ?></i>  a:</h5>
+                            <h5>Descifrado exitosamente el texto encriptado de: <i class="text-secondary"><?= (strtoupper($texto_encriptado)) ?></i>  a:</h5>
                             <h4 class="text-success">
-                                <?= utf8_encode($resultado) ?>       
+                                <?= ($resultado) ?>       
                             </h4>
                             
                         </div>
@@ -134,6 +134,9 @@ if(isset($_REQUEST["accion"])){
     if($_REQUEST["accion"] == "cifrar" ){
         $accion = $_REQUEST["accion"];
         $texto_plano = isset($_REQUEST["texto_plano"])? utf8_decode($_REQUEST["texto_plano"]) : "";
+        
+   
+
         $clave = isset($_REQUEST["clave"])? utf8_decode($_REQUEST["clave"]) : "";
         $texto = str_split($cifrador->eliminarEspacios($texto_plano));
         $claves = $cifrador->cargarClaveVigenere($texto_plano, $clave);
@@ -158,7 +161,7 @@ if(isset($_REQUEST["accion"])){
                     <?php 
                         for ($i=0; $i < $items_texto; $i++) { 
                             ?>
-                            <td><?= utf8_encode($texto[$i]); ?></td>
+                            <td><?= $texto[$i]; ?></td>
                         <?php }
                     ?>
                 </tr>
@@ -166,7 +169,7 @@ if(isset($_REQUEST["accion"])){
                     <td>C<sub>i</sub></td>
                     <?php 
                         for ($i=0; $i < $items_texto; $i++) { ?>
-                            <td><?= utf8_encode($claves[$i]); ?></td>
+                            <td><?= $claves[$i]; ?></td>
                         <?php }
                     ?>
                 </tr>
