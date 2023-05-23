@@ -36,17 +36,21 @@
 
 <div class="container">
     <?php include_once("../menu_top.php") ?>
-    <div class="row">
-        <div class="card">
-            <div class="card-header bg-danger text-light">
-                <h1>Cifrado por Sustitución</h1>
-            </div>
-            <div class="card-body">
-                <h3 class="card-title">Cifrado por Sustitución con Alfabeto Invertido</h3>
-                <p class="card-text">En este cifrado de sustitución las letras del alfabeto están invertidas</p>
+    <div class="row mx-4 d-flex flex-column justify-content-center align-items-center">
+        <div class="col">
+
+            <div class="card">
+                <div class="card-header bg-danger text-light">
+                    <h1>Cifrado por Sustitución</h1>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Cifrado por Sustitución con Alfabeto Invertido</h3>
+                    <p class="card-text">En este cifrado de sustitución las letras del alfabeto están invertidas</p>
+                </div>
             </div>
         </div>
-        <div class="col">
+    <div class="row mx-4 d-flex flex-column justify-content-center align-items-center">
+    <div class="col">
             <h1></h1>
             <h4>Alfabeto Base</h4>
             <table class="table">
@@ -64,7 +68,7 @@
                     <td>M<sub>i</sub></td>
                     <?php 
                         for ($i=0; $i < $items_alfabeto; $i++) { ?>
-                            <td><?= utf8_encode($alfabeto[$i]); ?></td>
+                            <td><?= $alfabeto[$i]; ?></td>
                         <?php }
                     ?>
                 </tr>
@@ -72,15 +76,17 @@
                     <td>C<sub>i</sub></td>
                     <?php 
                         for ($i=0; $i < $items_alfabeto; $i++) { ?>
-                            <td><?= utf8_encode($alfabeto_invertido[$i]); ?></td>
+                            <td><?=$alfabeto_invertido[$i]; ?></td>
                         <?php }
                     ?>
                 </tr>
             </table>
         </div>
     </div>
-    <div class="row">
-        <div class="col">
+
+</div>
+    <div class="row mx-4 d-flex flex-column justify-content-center align-items-center">
+        <div class="col w-75">
             <h4>Cifrado</h4>
             <form action="" method="GET">
                 <input type="hidden" value="cifrar" name="accion">
@@ -107,7 +113,7 @@
             ?>
 
         </div>
-        <div class="col">
+        <div class="col w-75">
             <h4>Descifrado</h4>
             <form action="" method="GET">
                 <input type="hidden" value="descifrar" name="accion">

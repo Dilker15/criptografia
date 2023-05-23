@@ -7,8 +7,35 @@
 
     $alfabeto = $cifrador->getAlfabeto();
     $claves = [];
-    $alfabeto_vigenere = $cifrador->getAlfabetoVigenere();
-
+    $alfabeto_vigenere = [
+        ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','Ñ','O','P','Q','R','S','T','U','V','W','X','Y','Z'],
+        ['B','C','D','E','F','G','H','I','J','K','L','M','N','Ñ','O','P','Q','R','S','T','U','V','W','X','Y','Z','A'],
+        ['C','D','E','F','G','H','I','J','K','L','M','N','Ñ','O','P','Q','R','S','T','U','V','W','X','Y','Z','A','B'],
+        ['D','E','F','G','H','I','J','K','L','M','N','Ñ','O','P','Q','R','S','T','U','V','W','X','Y','Z','A','B','C'],
+        ['E','F','G','H','I','J','K','L','M','N','Ñ','O','P','Q','R','S','T','U','V','W','X','Y','Z','A','B','C','D'],
+        ['F','G','H','I','J','K','L','M','N','Ñ','O','P','Q','R','S','T','U','V','W','X','Y','Z','A','B','C','D','E'],
+        ['G','H','I','J','K','L','M','N','Ñ','O','P','Q','R','S','T','U','V','W','X','Y','Z','A','B','C','D','E','F'],
+        ['H','I','J','K','L','M','N','Ñ','O','P','Q','R','S','T','U','V','W','X','Y','Z','A','B','C','D','E','F','G'],
+        ['I','J','K','L','M','N','Ñ','O','P','Q','R','S','T','U','V','W','X','Y','Z','A','B','C','D','E','F','G','H'],
+        ['J','K','L','M','N','Ñ','O','P','Q','R','S','T','U','V','W','X','Y','Z','A','B','C','D','E','F','G','H','I'],
+        ['K','L','M','N','Ñ','O','P','Q','R','S','T','U','V','W','X','Y','Z','A','B','C','D','E','F','G','H','I','J'],
+        ['L','M','N','Ñ','O','P','Q','R','S','T','U','V','W','X','Y','Z','A','B','C','D','E','F','G','H','I','J','K'],
+        ['M','N','Ñ','O','P','Q','R','S','T','U','V','W','X','Y','Z','A','B','C','D','E','F','G','H','I','J','K','L'],
+        ['N','Ñ','O','P','Q','R','S','T','U','V','W','X','Y','Z','A','B','C','D','E','F','G','H','I','J','K','L','M'],
+        ['Ñ','O','P','Q','R','S','T','U','V','W','X','Y','Z','A','B','C','D','E','F','G','H','I','J','K','L','M','N'],
+        ['O','P','Q','R','S','T','U','V','W','X','Y','Z','A','B','C','D','E','F','G','H','I','J','K','L','M','N','Ñ'],
+        ['P','Q','R','S','T','U','V','W','X','Y','Z','A','B','C','D','E','F','G','H','I','J','K','L','M','N','Ñ','O'],
+        ['Q','R','S','T','U','V','W','X','Y','Z','A','B','C','D','E','F','G','H','I','J','K','L','M','N','Ñ','O','P'],
+        ['R','S','T','U','V','W','X','Y','Z','A','B','C','D','E','F','G','H','I','J','K','L','M','N','Ñ','O','P','Q'],
+        ['S','T','U','V','W','X','Y','Z','A','B','C','D','E','F','G','H','I','J','K','L','M','N','Ñ','O','P','Q','R'],
+        ['T','U','V','W','X','Y','Z','A','B','C','D','E','F','G','H','I','J','K','L','M','N','Ñ','O','P','Q','R','S'],
+        ['U','V','W','X','Y','Z','A','B','C','D','E','F','G','H','I','J','K','L','M','N','Ñ','O','P','Q','R','S','T'],
+        ['V','W','X','Y','Z','A','B','C','D','E','F','G','H','I','J','K','L','M','N','Ñ','O','P','Q','R','S','T','U'],
+        ['W','X','Y','Z','A','B','C','D','E','F','G','H','I','J','K','L','M','N','Ñ','O','P','Q','R','S','T','U','V'],
+        ['X','Y','Z','A','B','C','D','E','F','G','H','I','J','K','L','M','N','Ñ','O','P','Q','R','S','T','U','V','W'],
+        ['Y','Z','A','B','C','D','E','F','G','H','I','J','K','L','M','N','Ñ','O','P','Q','R','S','T','U','V','W','X'],
+        ['Z','A','B','C','D','E','F','G','H','I','J','K','L','M','N','Ñ','O','P','Q','R','S','T','U','V','W','X','Y'],
+    ];
     // Variables 
     $accion = "";
     $resultado = "";
@@ -16,43 +43,28 @@
     $texto_encriptado = "";
     $clave = "";
 
-    if(isset($_REQUEST["accion"])){
-        if($_REQUEST["accion"] == "cifrar" ){
-            $accion = $_REQUEST["accion"];
-            $texto_plano = isset($_REQUEST["texto_plano"])? utf8_decode($_REQUEST["texto_plano"]) : "";
-            $clave = isset($_REQUEST["clave"])? utf8_decode($_REQUEST["clave"]) : "";
-            $texto = str_split($cifrador->eliminarEspacios($texto_plano));
-            $claves = $cifrador->cargarClaveVigenere($texto_plano, $clave);
-            $resultado = $cifrador->cifradoVigenere($texto_plano, $clave);
-        }
-
-        if($_REQUEST["accion"] == "descifrar" ){
-            $accion = $_REQUEST["accion"];
-            $texto_encriptado = isset($_REQUEST["texto_encriptado"])? utf8_decode($_REQUEST["texto_encriptado"]) : "";
-            $clave = isset($_REQUEST["clave"])? utf8_decode($_REQUEST["clave"]) : "";
-            $texto = str_split($cifrador->eliminarEspacios($texto_encriptado));
-            $claves = $cifrador->cargarClaveVigenere($texto_encriptado, $clave);
-            $resultado = $cifrador->descifradoVigenere($texto_encriptado, $clave);
-        }
-    }
+    
 ?>
 
 
 <div class="container">
     <?php include_once("../menu_top.php") ?>
-    <div class="row">
-        <div class="card">
-            <div class="card-header bg-danger text-light">
-                <h1>Cifrado por Sustitución</h1>
-            </div>
-            <div class="card-body">
-                <h3 class="card-title">Cifrado por el método de Vigenere</h3>
-                <p class="card-text"></p>
+    <div class="row mx-4 d-flex flex-column justify-content-center align-items-center">
+        <div class="col">
+            <div class="card">
+                <div class="card-header bg-danger text-light">
+                    <h1>Cifrado por Sustitución</h1>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Cifrado por el método de Vigenere</h3>
+                    <p class="card-text"></p>
+                </div>
             </div>
         </div>
+        
     </div>
-    <div class="row">
-        <div class="col">
+    <div class="row mx-4 d-flex flex-column justify-content-center align-items-center">
+        <div class="col w-75">
             <h4>Cifrado</h4>
             <form action="" method="GET">
                 <input type="hidden" value="cifrar" name="accion">
@@ -84,7 +96,7 @@
             ?>
 
         </div>
-        <div class="col">
+        <div class="col w-75">
             <h4>Descifrado</h4>
             <form action="" method="GET">
                 <input type="hidden" value="descifrar" name="accion">
@@ -117,8 +129,18 @@
             ?>              
         </div>
     </div>
-    <div class="row">
-        <div class="col">
+<?php
+if(isset($_REQUEST["accion"])){
+    if($_REQUEST["accion"] == "cifrar" ){
+        $accion = $_REQUEST["accion"];
+        $texto_plano = isset($_REQUEST["texto_plano"])? utf8_decode($_REQUEST["texto_plano"]) : "";
+        $clave = isset($_REQUEST["clave"])? utf8_decode($_REQUEST["clave"]) : "";
+        $texto = str_split($cifrador->eliminarEspacios($texto_plano));
+        $claves = $cifrador->cargarClaveVigenere($texto_plano, $clave);
+        $resultado = $cifrador->cifradoVigenere($texto_plano, $clave);
+?>
+    <div class="row mx-4 d-flex flex-column justify-content-center align-items-center">
+        <div class="col w-75">
             <h1></h1>
             <h3>Esquema</h3>
             <table class="table">
@@ -134,7 +156,8 @@
                 <tr>
                     <td>M<sub>i</sub></td>
                     <?php 
-                        for ($i=0; $i < $items_texto; $i++) { ?>
+                        for ($i=0; $i < $items_texto; $i++) { 
+                            ?>
                             <td><?= utf8_encode($texto[$i]); ?></td>
                         <?php }
                     ?>
@@ -158,7 +181,7 @@
                             <tr>
                                 <?php 
                                     for ($j=0; $j < $count_alfabeto; $j++) { ?>
-                                        <td><?= utf8_encode($alfabeto_vigenere[$i][$j]); ?></td>        
+                                        <td><?= $alfabeto_vigenere[$i][$j]; ?></td>        
                                         <?php 
                                     }                                
                                 ?>
@@ -169,8 +192,37 @@
                     </tr>
                 </tbody>
             </table>            
-        </div>        
+        </div>       
+        <div class="col w-75">
+            <h3>Texto plano cifrado: <?php echo $resultado ?></h3>
+        </div> 
     </div>
+   
+<?php
+
+    }
+
+    if($_REQUEST["accion"] == "descifrar" ){
+        $accion = $_REQUEST["accion"];
+        $texto_encriptado = isset($_REQUEST["texto_encriptado"])? utf8_decode($_REQUEST["texto_encriptado"]) : "";
+        $clave = isset($_REQUEST["clave"])? utf8_decode($_REQUEST["clave"]) : "";
+        $texto = str_split($cifrador->eliminarEspacios($texto_encriptado));
+        $claves = $cifrador->cargarClaveVigenere($texto_encriptado, $clave);
+        $resultado = $cifrador->descifradoVigenere($texto_encriptado, $clave);
+        ?>
+    <div class="row mx-4 d-flex flex-column justify-content-center align-items-center">
+             
+        <div class="col w-75">
+            <h3>Texto crifrado descifrado: <?php echo $resultado ?></h3>
+        </div> 
+    </div>
+   
+        <?php
+    }
+}
+?>
+
+
 </div>
 
 
