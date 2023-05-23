@@ -3,7 +3,7 @@
     class CifradoClasico {
 
         private $alfabeto = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','Ñ','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
-
+                            
         private $alfabeto_vigenere = [
             ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','Ñ','O','P','Q','R','S','T','U','V','W','X','Y','Z'],
             ['B','C','D','E','F','G','H','I','J','K','L','M','N','Ñ','O','P','Q','R','S','T','U','V','W','X','Y','Z','A'],
@@ -330,7 +330,7 @@
 
             for ($i = 0; $i < count($letras); $i++) {
                 if (ord($letras[$i]) == 209 ){
-                    $meh .= "Ñ";
+                    $meh .= 'Ñ';
                 } else {
                     $pos = array_search($letras[$i], $this->abc);
                     if ($pos !== false) {
