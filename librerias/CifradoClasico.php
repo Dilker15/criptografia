@@ -329,12 +329,15 @@
             
 
             for ($i = 0; $i < count($letras); $i++) {
-                $pos = array_search($letras[$i], $this->abc);
-                if ($pos !== false) {
-                    $meh .= $listaDespl[$pos];
+                if (ord($letras[$i]) == 209 ){
+                    $meh .= "Ñ";
+                } else {
+                    $pos = array_search($letras[$i], $this->abc);
+                    if ($pos !== false) {
+                        $meh .= $listaDespl[$pos];
+                    }
                 }
             }
-            
             return $meh;
         }
 
@@ -344,10 +347,13 @@
             $letras = str_split($mensaje);
 
             for ($i = 0; $i < count($letras); $i++) {
-                printf($letras[$i]);
-                $pos = array_search($letras[$i], $listaDespl);
-                if ($pos !== false) {
-                    $meh .= $this->abc[$pos];
+                if (ord($letras[$i]) == 209){
+                    $meh .= "Ñ";
+                } else {
+                    $pos = array_search($letras[$i], $listaDespl);
+                    if ($pos !== false) {
+                        $meh .= $this->abc[$pos];
+                    }
                 }
             }
             
