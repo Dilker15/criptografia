@@ -97,6 +97,7 @@
         }
 
         public function cifradoVigenere($texto, $clave){
+            
             $txt_sin_espacios = $this->eliminarEspacios($texto);
 
             $dimension = strlen($txt_sin_espacios);
@@ -104,12 +105,18 @@
             $claves = $this->cargarClaveVigenere($texto, $clave);
 
             $texto_cifrado = "";
-
+            
             for ($i=0; $i < $dimension; $i++) { 
-                $fil = array_search($txt_sin_espacios[$i], $this->alfabeto);
-                $col = array_search($claves[$i], $this->alfabeto);
-                $texto_cifrado .= $this->alfabeto_vigenere[$fil][$col];
+                if (ord($txt_sin_espacios[$i])==209) {
+                    $texto_cifrado .= "Ñ";
+                }else{
+                    $fil = array_search($txt_sin_espacios[$i], $this->alfabeto);
+                    $col = array_search($claves[$i], $this->alfabeto);
+                    $texto_cifrado .= $this->alfabeto_vigenere[$fil][$col];
+                }
+
             }
+            echo $texto_cifrado;
             return $texto_cifrado;
         }
 
@@ -123,11 +130,16 @@
             $texto_cifrado = "";
 
             for ($i=0; $i < $dimension; $i++) { 
-                $fil = array_search($claves[$i], $this->alfabeto);
+                if (ord($txt_sin_espacios[$i])==209) {
+                    $texto_cifrado .= "Ñ";
+                }else{
+                    $fil = array_search($claves[$i], $this->alfabeto);
 
-                $col = array_search($txt_sin_espacios[$i], $this->alfabeto_vigenere[$fil]);
+                    $col = array_search($txt_sin_espacios[$i], $this->alfabeto_vigenere[$fil]);
+                    
+                    $texto_cifrado .= $this->alfabeto[$col];
+                }
                 
-                $texto_cifrado .= $this->alfabeto[$col];
             }
             return $texto_cifrado;
         }        
@@ -297,6 +309,19 @@
          
         }
 
+        public function strView($texto){
+            $msg="";
+            for ($i=0; $i < strlen($texto); $i++) { 
+                if (ord($txt_sin_espacios[$i])==209) {
+                    $msg .= "Ñ";
+                }else{
+                    $msg .= strtoupper($texto[$i]);
+                }
+            }
+            echo $msg;
+            return $msg;
+        }
+
         public function eliminarEspacios($texto){
             return str_replace(' ', '', $texto);
         }
@@ -402,11 +427,21 @@
             $meh = ""; 
 
             for ($i = 0; $i < count($letras_Msm); $i++) {
-                $pos = array_search($letras_Msm[$i], $this->abc);
-                if ($pos !== false) {
-                    $meh .= $lista_llave[$pos];
+                if (ord($letras_Msm[$i])==209) {
+                    $meh .= "Ñ";
+                }else{
+                    $pos = array_search($letras_Msm[$i], $this->abc);
+                    if ($pos !== false) {
+                        $meh .= $lista_llave[$pos];
+                    }
                 }
+
+
+                
             }
+
+            echo $meh."aaaaaaaaaaaaaaaaaaaaaa";
+
             
             return $meh;
         }
@@ -437,10 +472,16 @@
             $meh = ""; 
 
             for ($i = 0; $i < count($letras_Msm); $i++) {
-                $pos = array_search($letras_Msm[$i], $lista_llave);
-                if ($pos !== false) {
-                    $meh .= $this->abc[$pos];
+                if (ord($letras_Msm[$i])==209) {
+                    $meh .= "Ñ";
+                }else{
+                    $pos = array_search($letras_Msm[$i], $lista_llave);
+                    if ($pos !== false) {
+                        $meh .= $this->abc[$pos];
+                    }
                 }
+
+                
             }
             
             return $meh;

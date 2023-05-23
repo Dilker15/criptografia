@@ -23,16 +23,17 @@
     if(isset($_REQUEST["accion"])){
         if($_REQUEST["accion"] == "cifrar" ){
             $accion = $_REQUEST["accion"];
-            $texto_plano    = isset($_REQUEST["texto_plano"])   ? utf8_decode($_REQUEST["texto_plano"]) : "";
-            $llave    = isset($_REQUEST["llave"])   ? utf8_decode($_REQUEST["llave"]) : "";
-            $desplazamiento = isset($_REQUEST["desplazamiento"])? utf8_decode($_REQUEST["desplazamiento"]) : "";
+            $texto_plano=$cifrador->strView(isset($_REQUEST["texto_plano"])   ? $_REQUEST["texto_plano"] : "");
+            //$texto_plano    = isset($_REQUEST["texto_plano"])   ? utf8_decode($_REQUEST["texto_plano"]) : "";
+            $llave= isset($_REQUEST["llave"])   ? utf8_decode($_REQUEST["llave"]) : "";
+            $desplazamiento = isset($_REQUEST["desplazamiento"])? $_REQUEST["desplazamiento"] : "";
             $alfabetoC = $cifrador->getAlfabetoDespPuroConClave($llave, $desplazamiento);
             $resultado = $cifrador->cifradoPuroConClave($texto_plano, $llave, $desplazamiento);
         }
 
         if($_REQUEST["accion"] == "descifrar" ){
             $accion = $_REQUEST["accion"];
-            $texto_encriptado = isset($_REQUEST["texto_encriptado"])? utf8_decode($_REQUEST["texto_encriptado"]) : "";
+            $texto_encriptado =$cifrador->strView( isset($_REQUEST["texto_encriptado"])? utf8_decode($_REQUEST["texto_encriptado"]) : "");
             $llave    = isset($_REQUEST["llave"])   ? utf8_decode($_REQUEST["llave"]) : "";
             $desplazamiento = isset($_REQUEST["desplazamiento"])? utf8_decode($_REQUEST["desplazamiento"]) : "";
             $alfabetoC = $cifrador->getAlfabetoDespPuroConClave($llave, $desplazamiento);
@@ -80,7 +81,7 @@
                     <?php 
                         $items_alfabetoM = count($alfabetoM); 
                         for ($i=0; $i < $items_alfabetoM; $i++) { ?>
-                            <td><?= utf8_encode($alfabetoM[$i]); ?></td>
+                            <td><?= $alfabetoM[$i]; ?></td>
                         <?php }
                     ?>
                 </tr>
@@ -91,7 +92,7 @@
                             <?php                     
                                 $items_alfabetoC = count($alfabetoC); 
                                 for ($i=0; $i < $items_alfabetoC; $i++) { ?>
-                                    <td><?= utf8_encode($alfabetoC[$i]); ?></td>
+                                    <td><?= $alfabetoC[$i]; ?></td>
                                 <?php }
                             ?>
                         </tr>  
@@ -128,9 +129,9 @@
                 if($resultado != "" && $accion == "cifrar"){ ?>
                     <div class="row pt-3">
                         <div class="col">
-                            <h5>Cifrado exitosamente el texto de: <i class="text-secondary"><?= utf8_encode(strtoupper($texto_plano)) ?></i>  a:</h5>
+                            <h5>Cifrado exitosamente el texto de: <i class="text-secondary"><?= (($texto_plano)) ?></i>  a:</h5>
                             <h4 class="text-success">
-                                <?= utf8_encode($resultado) ?>       
+                                <?= ($resultado) ?>       
                             </h4>
                             
                         </div>
@@ -165,9 +166,9 @@
                 if($resultado != "" && $accion == "descifrar"){ ?>
                     <div class="row pt-3">
                         <div class="col">
-                            <h5>Descifrado exitosamente el texto encriptado de: <i class="text-secondary"><?= utf8_encode(strtoupper($texto_encriptado)) ?></i>  a:</h5>
+                            <h5>Descifrado exitosamente el texto encriptado de: <i class="text-secondary"><?= (($texto_encriptado)) ?></i>  a:</h5>
                             <h4 class="text-success">
-                                <?= utf8_encode($resultado) ?>       
+                                <?= ($resultado) ?>       
                             </h4>
                             
                         </div>
