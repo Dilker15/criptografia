@@ -2,10 +2,10 @@
 <?php include("../negocio/cifrado_filas.php") ?>
 
 <h1 class="text-center mt-4">Cifrado de transposicion por fila</h1>
-<div class="card container bg-primary" style="width: 60rem;">
+<div class="card container bg-secondary" style="width: 60rem;">
     <form action="">
         <div class="card-body">
-            <div class="card w-80 bg-primary">
+            <div class="card w-80 bg-secondary">
                 <div class="card-body">
                     <label for="cifrar" class="form-label">Palabra a cifrar</label>
                     <textarea name="cifrado" id="cifrar" placeholder="palabra a cifrar" required class="form-control"><?php if (isset($_REQUEST['cifrado'])) {
@@ -15,7 +15,7 @@
                 </div>
             </div>
 
-            <div class="card w-80 bg-primary">
+            <div class="card w-80 bg-secondary">
                 <label>Clave transposicion por fila</label>
                 <div class="card-body">
                     <div>
@@ -32,7 +32,7 @@
                     </div>
                 </div>
             </div>
-            <div class="card w-80 bg-primary">
+            <div class="card w-80 bg-secondary">
                 <div class="card-body">
                     <input type="submit" class="btn btn-success " name="cifrar" value="CifrarPalabra">
                     <input type="submit" class="btn btn-success " name="descifrar" value="Descifrar palabra">
@@ -53,10 +53,10 @@ if (isset($_REQUEST['cifrar'])) {
     $a1->crearMatrizFil();
     $a1->armandoCifradoFil();
 ?>
-    <div class="card container bg-primary mt-4" style="width: 60rem;">
+    <div class="card container bg-secondary mt-4" style="width: 60rem;">
 
         <h5 class="card-title text-center mt-2">Cifrado por transposicion de filas</h5>
-        <div class="card w-80 bg-primary mt-2">
+        <div class="card w-80 bg-secondary mt-2">
             <div class="card-body">
                 <p class="card-text mb-1">El texto a cifrar fue el siguiente:</p>
                 <label for="" class="mx-5 mb-3"><?php echo $a1->palabraCifrar; ?></label>
@@ -67,7 +67,7 @@ if (isset($_REQUEST['cifrar'])) {
             </div>
         </div>
 
-        <div class="card w-80 bg-primary">
+        <div class="card w-80 bg-secondary">
             <div class="card-body">
                 <h5 class="card-title text-center">Detalle del cifrado</h5>
                 <p class="card-text m-3">El texto lo ordenamos de arriba hacia abajo, teniendo que formar <?php echo $a1->cantFil ?> filas, dandonos <?php echo $a1->cantCol ?> columnas, si sobran espacios se rellenaran con <?php echo $a1->llenado ?></p>
@@ -83,7 +83,7 @@ if (isset($_REQUEST['cifrar'])) {
                 <p class="card-text m-3">El texto cifrado lo obtenemos leyendo de izquierda a derecha.</p>
             </div>
         </div>
-        <div class="card w-80 bg-primary">
+        <div class="card w-80 bg-secondary">
             <div class="card-body">
                 <h5 class="card-title text-center">Fin del detalle del cifrado</h5>
                 <p class="card-text">Texto cifrado:</p>
@@ -101,10 +101,10 @@ if (isset($_REQUEST['descifrar'])) {
     $a1->crearDesMatrizFil();
     $a1->armandoDescifradoFil();
 ?>
-    <div class="card container bg-primary mt-4" style="width: 60rem;">
+    <div class="card container bg-secondary mt-4" style="width: 60rem;">
 
         <h5 class="card-title text-center mt-2">Descifrado por transposicion de filas</h5>
-        <div class="card w-80 bg-primary mt-2">
+        <div class="card w-80 bg-secondary mt-2">
             <div class="card-body">
                 <p class="card-text mb-1">El texto a descifrar fue el siguiente:</p>
                 <label for="" class="mx-5 mb-3"><?php echo $a1->palabraCifrar; ?></label>
@@ -115,7 +115,7 @@ if (isset($_REQUEST['descifrar'])) {
             </div>
         </div>
 
-        <div class="card w-80 bg-primary">
+        <div class="card w-80 bg-secondary">
             <div class="card-body">
                 <h5 class="card-title text-center">Detalle del descifrado</h5>
                 <p class="card-text m-3">El texto lo ordenamos de derecha a izquierda, teniendo que formar <?php echo $a1->cantFil ?> filas, dandonos <?php echo $a1->cantCol ?> columnas.</p>
@@ -130,7 +130,7 @@ if (isset($_REQUEST['descifrar'])) {
                 <p class="card-text m-3">El texto descifrado lo obtenemos leyendo de arriba hacia abajo.</p>
             </div>
         </div>
-        <div class="card w-80 bg-primary">
+        <div class="card w-80 bg-secondary">
             <div class="card-body">
                 <h5 class="card-title text-center">Fin del detalle del descifrado</h5>
                 <p class="card-text">Texto descifrado:</p>

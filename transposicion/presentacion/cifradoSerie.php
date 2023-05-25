@@ -9,7 +9,7 @@ if ((isset($_REQUEST['cifrar']) or isset($_REQUEST['descifrar'])) and (!isset($_
 <?php  } ?>
 
 <h1 class="text-center mt-4">Cifrado de transposicion por serie</h1>
-<div class="card container bg-primary " style="width: 60rem;">
+<div class="card container bg-secondary " style="width: 60rem;">
     <div class="card-body">
         <form action="cifradoSerie.php" method="GET">
             <div class="mb-3">
@@ -204,7 +204,7 @@ if ((isset($_REQUEST['cifrar']) or isset($_REQUEST['descifrar'])) and (!isset($_
         $cifra->armandoCifrado();
         ?>
         <h1 class="text-center">Cifrado</h1>
-        <div class="card container bg-primary mt-3 mb-3" style="width: 60rem;">
+        <div class="card container bg-secondary mt-3 mb-3" style="width: 60rem;">
             <div class="card-body">
                 <h4>La palabra a cifrar es : </h4>
                 <label for="">
@@ -248,7 +248,7 @@ if ((isset($_REQUEST['cifrar']) or isset($_REQUEST['descifrar'])) and (!isset($_
         $cifra->armandoDescifrado();
         ?>
         <h1 class="text-center">Descifrado</h1>
-        <div class="card container bg-primary mt-3 mb-3" style="width: 60rem;">
+        <div class="card container bg-secondary mt-3 mb-3" style="width: 60rem;">
             <div class="card-body">
                 <h4>Palabra a descifrar : </h4>
                 <label for="palabracifrada">

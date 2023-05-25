@@ -52,7 +52,7 @@
     <div class="row mx-4 d-flex flex-column justify-content-center align-items-center">
         <div class="col">
             <div class="card">
-                <div class="card-header bg-danger text-light">
+                <div class="card-header bg-secondary text-light">
                     <h1>Cifrado por Sustitución</h1>
                 </div>
                 <div class="card-body">
