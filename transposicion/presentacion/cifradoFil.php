@@ -73,7 +73,9 @@ if (isset($_REQUEST['cifrar'])) {
             </div>
         </div>
 
+
         <div class="card w-80 m-2">
+
             <div class="card-body">
                 <h5 class="card-title text-center text-light">Detalle del cifrado</h5>
                 <p class="card-text m-3">El texto lo ordenamos de arriba hacia abajo, teniendo que formar <?php echo $a1->cantFil ?> filas, dandonos <?php echo $a1->cantCol ?> columnas, si sobran espacios se rellenaran con <?php echo $a1->llenado ?></p>
@@ -89,7 +91,9 @@ if (isset($_REQUEST['cifrar'])) {
                 <p class="card-text m-3">El texto cifrado lo obtenemos leyendo de izquierda a derecha.</p>
             </div>
         </div>
+
         <div class="card w-80 m-2">
+
             <div class="card-body">
                 <h5 class="card-title text-center text-light">Fin del detalle del cifrado</h5>
                 <p class="card-text">Texto cifrado:</p>

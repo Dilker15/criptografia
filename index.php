@@ -19,7 +19,7 @@
         <div class="row d-flex flex-column">
             <div class="col  mt-4">
                 <div class="card w-75 m-auto">
-                    <div class="card-header bg-dark text-light">    
+                    <div class="card-header bg-secondary text-light">    
                         <h5 class="card-title">Cifra de Desplazamiento</h5>                    
                     </div>
                     <div class="card-body">
@@ -38,7 +38,7 @@
             </div>
             <div class="col mt-4">
                 <div class="card w-75 m-auto">
-                    <div class="card-header bg-warning text-light">   
+                    <div class="card-header bg-secondary text-light">   
                         <h5 class="card-title">Cifra por Transposición</h5>                     
                     </div>
                     <div class="card-body">
@@ -46,26 +46,26 @@
                     </div>
                     <div class="card-footer">
                         <a href="<?= constant("URL") ?>transposicion/grupos.php">
-                            <button type="button" class="btn btn-warning">Grupos</button>
+                            <button type="button" class="btn btn-dark">Grupos</button>
                         </a>
                         <a href="<?= constant("URL") ?>transposicion/presentacion/cifradoSerie.php">
-                            <button type="button" class="btn btn-warning">Series</button>
+                            <button type="button" class="btn btn-dark">Series</button>
                         </a>
                         <a href="<?= constant("URL") ?>transposicion/presentacion/cifradoCol.php">
-                            <button type="button" class="btn btn-warning">Columnas</button>
+                            <button type="button" class="btn btn-dark">Columnas</button>
                         </a>
                         <a href="<?= constant("URL") ?>transposicion/presentacion/cifradoFil.php">
-                            <button type="button" class="btn btn-warning">Filas</button>
+                            <button type="button" class="btn btn-dark">Filas</button>
                         </a>
                         <a href="<?= constant("URL") ?>transposicion/zig_zag.php">
-                            <button type="button" class="btn btn-warning">Zig-Zag</button>
+                            <button type="button" class="btn btn-dark">Zig-Zag</button>
                         </a>
                     </div>
                 </div>
             </div>
             <div class="col  mt-4">
                 <div class="card w-75 m-auto">
-                    <div class="card-header bg-danger text-light">  
+                    <div class="card-header bg-secondary text-light">  
                     <h5 class="card-title">Sustitución</h5>
                       
                     </div>
@@ -74,10 +74,10 @@
                     </div>
                     <div class="card-footer">
                         <a href="<?= constant("URL") ?>sustitucion/mono_alfabetica.php">
-                            <button type="button" class="btn btn-danger">Mono alfabética</button>
+                            <button type="button" class="btn btn-dark">Mono alfabética</button>
                         </a>
                         <a href="<?= constant("URL") ?>sustitucion/poli_alfabetica.php">
-                            <button type="button" class="btn btn-danger">Poli alfabética</button>
+                            <button type="button" class="btn btn-dark">Poli alfabética</button>
                         </a>
                     </div>
                 </div>
