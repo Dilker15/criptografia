@@ -8,18 +8,21 @@ if ((isset($_REQUEST['cifrar']) or isset($_REQUEST['descifrar'])) and (!isset($_
     </div>
 <?php  } ?>
 
-<h1 class="text-center mt-4">Cifrado de transposicion por serie</h1>
-<div class="card container bg-primary " style="width: 60rem;">
-    <div class="card-body">
+
+<div class="card container bg-secondary " style="width: 60rem;">
+    <div class="card-header">
+        <h1 class="text-center mt-4 text-light">Cifrado de transposicion por serie</h1>
+    </div>
+    <div class="card-body bg-light mb-2">
         <form action="cifradoSerie.php" method="GET">
-            <div class="mb-3">
+            <div class="m-2">
                 <label for="cifrar" class="form-label">Palabra a cifrar </label>
                 <textarea type="text" class="form-control" placeholder="palabra a cifrar" id="cifrar" name="cifrado" required><?php if (isset($_REQUEST['cifrado'])) {
                                                                                                                                     $aux = $_REQUEST['cifrado'];
                                                                                                                                     echo $aux;
                                                                                                                                 } ?></textarea>
             </div>
-            <div class="mb-3">
+            <div class="m-2">
                 <label for="cifrar" class="form-label">Orden de la serie </label>
 
                 <div class="row card-columns mb-3">
@@ -203,9 +206,12 @@ if ((isset($_REQUEST['cifrar']) or isset($_REQUEST['descifrar'])) and (!isset($_
         $cifra->cifradoSerie($_REQUEST['primerSerie'], $_REQUEST['segundaSerie'], $_REQUEST['terceraSerie']);
         $cifra->armandoCifrado();
         ?>
-        <h1 class="text-center">Cifrado</h1>
-        <div class="card container bg-primary mt-3 mb-3" style="width: 60rem;">
-            <div class="card-body">
+       
+        <div class="card container bg-secondary mt-3 mb-3" style="width: 60rem;">
+        <div class="card-header">
+            <h1 class="text-center text-light">Cifrado</h1>
+        </div>
+            <div class="card-body bg-light m-2">
                 <h4>La palabra a cifrar es : </h4>
                 <label for="">
                     <?php echo $cifra->cifrar; ?>
@@ -248,7 +254,7 @@ if ((isset($_REQUEST['cifrar']) or isset($_REQUEST['descifrar'])) and (!isset($_
         $cifra->armandoDescifrado();
         ?>
         <h1 class="text-center">Descifrado</h1>
-        <div class="card container bg-primary mt-3 mb-3" style="width: 60rem;">
+        <div class="card container bg-secondary mt-3 mb-3" style="width: 60rem;">
             <div class="card-body">
                 <h4>Palabra a descifrar : </h4>
                 <label for="palabracifrada">
