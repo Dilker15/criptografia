@@ -16,13 +16,14 @@
                             <td class="bg-secondary text-light">NOMBRES</td>
                         </tr>
                         <tr>
-                            <td>Herbert Lázaro Flores</td>
+                            <td>Cartagena Pedraza Dilker</td>
                         </tr>
                         <tr>
-                            <td>Junior Llanos</td>
+                            <td>Gonzales Estrada Julio Enrique</td>
+                            
                         </tr>
                         <tr>
-                            <td>Fernando Ameller</td>
+                            <td>Villca Mercado Juan Carlo </td>
                         </tr>
                         
                     </tbody>

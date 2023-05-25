@@ -73,7 +73,7 @@
                     <?php 
                         $items_alfabetoM = count($alfabetoM); 
                         for ($i=0; $i < $items_alfabetoM; $i++) { ?>
-                            <td><?= utf8_encode($alfabetoM[$i]); ?></td>
+                            <td><?= $alfabetoM[$i]; ?></td>
                         <?php }
                     ?>
                 </tr>
@@ -84,7 +84,7 @@
                             <?php                     
                                 $items_alfabetoC = count($alfabetoC); 
                                 for ($i=0; $i < $items_alfabetoC; $i++) { ?>
-                                    <td><?= utf8_encode($alfabetoC[$i]); ?></td>
+                                    <td><?= $alfabetoC[$i]; ?></td>
                                 <?php }
                             ?>
                         </tr>  
@@ -117,9 +117,9 @@
                 if($resultado != "" && $accion == "cifrar"){ ?>
                     <div class="row pt-3">
                         <div class="col">
-                            <h5>Cifrado exitosamente el texto de: <i class="text-secondary"><?= utf8_encode(strtoupper($texto_plano)) ?></i>  a:</h5>
+                            <h5>Cifrado exitosamente el texto de: <i class="text-secondary"><?= strtoupper($texto_plano) ?></i>  a:</h5>
                             <h4 class="text-success">
-                                <?= utf8_encode($resultado) ?>       
+                                <?= $resultado ?>       
                             </h4>
                             
                         </div>
@@ -149,9 +149,9 @@
                 if($resultado != "" && $accion == "descifrar"){ ?>
                     <div class="row pt-3">
                         <div class="col">
-                            <h5>Descifrado exitosamente el texto encriptado de: <i class="text-secondary"><?= utf8_encode(strtoupper($texto_encriptado)) ?></i>  a:</h5>
+                            <h5>Descifrado exitosamente el texto encriptado de: <i class="text-secondary"><?= strtoupper($texto_encriptado) ?></i>  a:</h5>
                             <h4 class="text-success">
-                                <?= utf8_encode($resultado) ?>       
+                                <?= $resultado ?>       
                             </h4>
                             
                         </div>

@@ -3,7 +3,7 @@
     class CifradoClasico {
 
         private $alfabeto = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','Ñ','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
-
+                            
         private $alfabeto_vigenere = [
             ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','Ñ','O','P','Q','R','S','T','U','V','W','X','Y','Z'],
             ['B','C','D','E','F','G','H','I','J','K','L','M','N','Ñ','O','P','Q','R','S','T','U','V','W','X','Y','Z','A'],
@@ -354,12 +354,15 @@
             
 
             for ($i = 0; $i < count($letras); $i++) {
-                $pos = array_search($letras[$i], $this->abc);
-                if ($pos !== false) {
-                    $meh .= $listaDespl[$pos];
+                if (ord($letras[$i]) == 209 ){
+                    $meh .= 'Ñ';
+                } else {
+                    $pos = array_search($letras[$i], $this->abc);
+                    if ($pos !== false) {
+                        $meh .= $listaDespl[$pos];
+                    }
                 }
             }
-            
             return $meh;
         }
 
@@ -369,10 +372,13 @@
             $letras = str_split($mensaje);
 
             for ($i = 0; $i < count($letras); $i++) {
-                printf($letras[$i]);
-                $pos = array_search($letras[$i], $listaDespl);
-                if ($pos !== false) {
-                    $meh .= $this->abc[$pos];
+                if (ord($letras[$i]) == 209){
+                    $meh .= "Ñ";
+                } else {
+                    $pos = array_search($letras[$i], $listaDespl);
+                    if ($pos !== false) {
+                        $meh .= $this->abc[$pos];
+                    }
                 }
             }
             
